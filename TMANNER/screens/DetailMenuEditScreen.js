@@ -6,6 +6,8 @@ import Header from "../components/Header";
 import React, { useState } from 'react';
 import { SelectList } from 'react-native-dropdown-select-list';
 
+import ModalTab from '../components/ModaTab';
+
 function DetailMenuEditScreen({ route, navigation  }) {
     const { productId } = route.params;
     const windowWidth = Dimensions.get('window').width;
@@ -32,7 +34,7 @@ function DetailMenuEditScreen({ route, navigation  }) {
         setSelectedRadio((prevValue) => (prevValue === value ? null : value));
     };
     
-    
+    const [modalVisible, setModalVisible] = useState(false); //모달 상태
 
     if (!menuItem) return <Text>메뉴를 찾을 수 없습니다.</Text>;
 
@@ -168,9 +170,20 @@ function DetailMenuEditScreen({ route, navigation  }) {
             </ScrollView>
 
             {/* 여기에 새로운 버튼 추가 */}
-            <TouchableOpacity style={styles.customButton}>
+            <TouchableOpacity style={styles.customButton} onPress={() => setModalVisible(true)}>
                 <Text style={styles.buttonText}>메뉴수정 완료</Text>
             </TouchableOpacity>
+
+            <ModalTab 
+                isVisible={modalVisible} 
+                onClose={() => setModalVisible(false)}
+                onGo={() => {
+                // 보러가기 버튼을 눌렀을 때 실행될 액션
+                setModalVisible(false);
+                // 다른 화면으로 이동하거나, 원하는 기능 추가
+                }}
+                outputText={"사장님, 메뉴 수정이 완료 되었어요."}
+            />
         </SafeAreaView>
     );
 }
