@@ -1,9 +1,9 @@
 import { StyleSheet, View, Text, SafeAreaView, Image, 
-    Dimensions , TouchableOpacity, TextInput, ScrollView, KeyboardAvoidingView } from 'react-native';
+    Dimensions , TouchableOpacity, TextInput, ScrollView, Switch } from 'react-native';
 
 import categories from '../assets/data/data';
 import Header from "../components/Header";
-
+import React, { useState } from 'react';
 import { SelectList } from 'react-native-dropdown-select-list';
 
 function DetailMenuEditScreen({ route, navigation  }) {
@@ -15,6 +15,24 @@ function DetailMenuEditScreen({ route, navigation  }) {
     const selectedCategory = categories.find(category => category.content.some(item => item.productId === productId));
     const selectedCategoryName = selectedCategory ? selectedCategory.name : ""; 
 
+    const [activeSpicyStep, setActiveSpicyStep] = useState(null);
+
+    const handleSpicyButtonPress = (index) => {
+        if (activeSpicyStep === index) {
+            setActiveSpicyStep(null);  // 같은 버튼을 누를 경우 비활성화
+        } else {
+            setActiveSpicyStep(index);  // 다른 버튼을 누를 경우 해당 버튼 활성화
+        }
+    };
+
+    const [isBestMenu, setIsBestMenu] = useState(false);  // 기본적으로 비활성 상태로 설정
+    const [selectedRadio, setSelectedRadio] = useState(null); // null이 초기값입니다.
+    const handleRadioPress = (value) => {
+        // 이미 선택된 값과 동일한 버튼을 누른 경우 선택 해제, 그렇지 않은 경우 해당 값을 선택
+        setSelectedRadio((prevValue) => (prevValue === value ? null : value));
+    };
+    
+    
 
     if (!menuItem) return <Text>메뉴를 찾을 수 없습니다.</Text>;
 
@@ -78,20 +96,81 @@ function DetailMenuEditScreen({ route, navigation  }) {
 
                         <View style={styles.categorySeparator} />
 
+                        {/* 옵션 파트 */}
                         <View style={styles.inputContainer}>
                             <View style={styles.inputTitleContainer}>
                                 <Text style={styles.inputTitle}>옵션</Text>
                                 <Text style={styles.subinputTitle}>(*선택사항입니다.)</Text>
                             </View>
+
+                            {/* 맵기 단계 설정 파트 */}
                             <Text style={styles.subTitle}>맵기 단계</Text>
                             <View style={styles.spicyStepContainer}>
-
+                                <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+                                    {Array.from({ length: 6 }).map((_, index) => (
+                                        <TouchableOpacity 
+                                            key={index} 
+                                            style={[
+                                                styles.spicyButton,
+                                                activeSpicyStep === index ? styles.activeSpicyButton : {}
+                                            ]}
+                                            onPress={() => handleSpicyButtonPress(index)}
+                                        >
+                                            <Text style={activeSpicyStep === index ? styles.activeSpicyText : {}}>
+                                                {index}단계
+                                            </Text>
+                                        </TouchableOpacity>
+                                    ))}
+                                </ScrollView>
                             </View>
-                             
+
+                            {/* 베스트 메뉴 등록 */}
+                            <View style={styles.bestMenuContainer}>
+                                <Text style={styles.inputTitle}>베스트 메뉴 등록</Text>
+                                <Switch
+                                    value={isBestMenu}
+                                    onValueChange={value => setIsBestMenu(value)}
+                                    trackColor={{ false: "#D9D9D9", true: "#FF6A00" }}  // 원하는 컬러로 변경 가능
+                                    thumbColor={"#fff"}
+                                />
+                            </View>
+
+                            {/* 프린트 위치 */}
+                            <View style={styles.printPos}>
+                                <Text style={styles.inputTitle}>프린트 위치</Text>
+                            </View>
+
+                            {/* 서빙/주방 선택 */}
+                            <View style={styles.radioContainer}>
+                                <View style={styles.radioButtonWrapper}>
+                                    <TouchableOpacity style={styles.radioBtn} onPress={() => handleRadioPress('serving')}>
+                                        <View style={[
+                                            styles.radio,
+                                            selectedRadio === 'serving' && styles.selectedRadio
+                                        ]} />
+                                    </TouchableOpacity>
+                                    <Text style={styles.radioText}>서빙</Text>
+                                </View>
+                                
+                                <View style={styles.radioButtonWrapper}>
+                                    <TouchableOpacity style={styles.radioBtn} onPress={() => handleRadioPress('kitchen')}>
+                                        <View style={[
+                                            styles.radio,
+                                            selectedRadio === 'kitchen' && styles.selectedRadio
+                                        ]} />
+                                    </TouchableOpacity>
+                                    <Text style={styles.radioText}>주방</Text>
+                                </View>       
+                            </View>
                         </View>
                     </View>
                 </View>
             </ScrollView>
+
+            {/* 여기에 새로운 버튼 추가 */}
+            <TouchableOpacity style={styles.customButton}>
+                <Text style={styles.buttonText}>메뉴수정 완료</Text>
+            </TouchableOpacity>
         </SafeAreaView>
     );
 }
@@ -193,24 +272,101 @@ const styles = StyleSheet.create({
     },inputTitleContainer:{
         flexDirection: 'row',
     },
+
     subinputTitle: {
         fontSize: 12,
         color: '#757575',
         marginLeft: 5,
-    }, categorySeparator: {
+    }, 
+    
+    categorySeparator: {
         height: 1,
         backgroundColor: '#D9D9D9',
         marginBottom: 16,
         marginTop: 34,
     },
+
     subTitle: {
         fontSize: 14,
         fontWeight: '600',
         marginBottom: 6,
         marginTop: 26,
-    },spicyStepContainer:{
+    },
+    
+    spicyStepContainer:{
         flexDirection: 'row',
         paddingRight:8,
     },
+    
+    activeSpicyButton: {
+        backgroundColor: 'black',  // 활성화된 버튼의 배경색
+    },
+
+    activeSpicyText: {
+        color: 'white' // 활성화된 버튼의 글자색
+    },
+    
+    spicyButton: {
+        width: 60,
+        height: 32,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginRight: 8, // 버튼 사이의 간격을 주기 위해
+        flexShrink: 0,
+        backgroundColor: '#fff', // 원하는 배경색으로 설정 가능
+        borderWidth: 1, // 테두리 두께
+        borderColor: '#D9D9D9', // 테두리 색상
+        borderRadius: 4,
+    },
+    bestMenuContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginTop: 29,
+    },printPos:{
+        marginTop: 29,
+    },
+    radioContainer: {
+        alignItems: 'flex-start',
+        marginTop: 10,
+    },
+    radioButtonWrapper: {
+        flexDirection: 'row', // 라디오 버튼과 글씨를 가로로 배열
+        alignItems: 'center',
+        marginBottom: 17, // 각 라디오 버튼 사이의 간격
+    },
+    radio: {
+        width: 20,
+        height: 20,
+        borderRadius: 10,
+        borderWidth: 2,
+        borderColor: '#D9D9D9',
+        marginRight: 9, // 버튼과 글씨 사이의 간격
+    },
+    selectedRadio: {
+        backgroundColor: '#fff',  // 배경색을 하얀색으로 설정
+        borderWidth: 5,  // 테두리 두께를 5px로 설정
+        borderColor: 'black',  // 테두리 색깔을 검정색으로 설정
+    },
+    
+    radioText: {
+        fontSize: 14,
+        color: '#757575',
+    },customButton: {
+        display: 'flex',
+        width: 350,
+        padding: 16,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 4,
+        backgroundColor: '#000',
+        alignSelf: 'center', 
+        marginBottom: 10,
+        marginTop: 10,   
+    },
+    buttonText: {
+        color: 'white', 
+        fontSize: 16,   
+    }
 });
 export default DetailMenuEditScreen;
