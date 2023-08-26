@@ -8,11 +8,12 @@ import { SelectList } from 'react-native-dropdown-select-list';
 
 import ModalTab from '../components/ModaTab';
 
-function DetailMenuEditScreen({ route, navigation  }) {
+function DetailMenuEditScreen({ route, navigation}) {
     const { productId } = route.params;
     const windowWidth = Dimensions.get('window').width;
     const menuItem = categories.flatMap(category => category.content).find(item => item.productId === productId);
 
+    const [deleteModalVisible, setDeleteModalVisible] = useState(false);
     // 선택된 상품이 속한 카테고리를 찾습니다.
     const selectedCategory = categories.find(category => category.content.some(item => item.productId === productId));
     const selectedCategoryName = selectedCategory ? selectedCategory.name : ""; 
@@ -42,9 +43,23 @@ function DetailMenuEditScreen({ route, navigation  }) {
         <SafeAreaView style={styles.safeAreaContainer}>
             <View style={styles.container}>
                 <Header navigation={navigation} title="메뉴 수정" targetScreen="MenuEdit"/>
-                <TouchableOpacity style={styles.deleteBtn} onPress={() => navigation.navigate('Main')}>
-                    <Text style={styles.deleteText}>메뉴 삭제</Text>
+                <TouchableOpacity style={styles.deleteBtn} onPress={() => setDeleteModalVisible(true)}>
+                    <Text style={styles.deleteText}>메뉴 삭제</Text> 
                 </TouchableOpacity>
+
+                <ModalTab 
+                    isVisible={deleteModalVisible} 
+                    onClose={() => setDeleteModalVisible(false)}
+                    onGo={() => {
+                        // 메뉴 삭제 기능을 여기에 추가하시면 됩니다.
+                        setDeleteModalVisible(false);
+                        // 예를 들어, navigation.goBack()을 사용하여 이전 화면으로 돌아가도록 할 수 있습니다.
+                        // navigation.goBack();
+                    }}
+                    outputText={"사장님, 메뉴삭제가 완료되었어요."}
+                />
+
+
             </View>
 
             <ScrollView keyboardShouldPersistTaps ='always' style={{flex: 1}}>
