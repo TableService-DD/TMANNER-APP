@@ -51,7 +51,7 @@ function MainScreen(props) {
                             <Text style={styles.btnSubTitle}>카테고리 추가/등록/삭제</Text>
                             <Text style={styles.btnIcon}>📋</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.btn} onPress={() => navigation.navigate('Test')}>
+                        <TouchableOpacity style={styles.btn} onPress={() => navigation.navigate('DetailMenuAdd')}>
                             <Text style={styles.btnTitle}>메뉴 등록</Text>
                             <Text style={styles.btnIcon}>🧑🏼‍🍳</Text>
                         </TouchableOpacity>

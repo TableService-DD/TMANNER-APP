@@ -12,21 +12,21 @@ function ModalTab({ isVisible, onClose, onGo, outputText, subText }) {
         <View style={styles.modalView}>
           <View style={styles.modalTextContainer}>
             <Text style={styles.modalText}>{outputText}</Text>
-            <Text style={styles.modalText}>{subText}</Text>
+            <Text style={styles.modalSubText}>{subText}</Text>
           </View>
           <View style={styles.btnContainer}>
             <TouchableOpacity style={styles.exitBtn} onPress={onClose}>
               <Text style={styles.exitBtnText}>닫기</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.viewBtn} onPress={onGo}>
-              <Text style={styles.viewBtnText}>보러가기</Text>
+              <Text style={styles.viewBtnText}>메뉴판 보러가기</Text>
             </TouchableOpacity>
           </View>
         </View>
       </View>
     </Modal>
   );
-}
+} 
 
 
 const styles = StyleSheet.create({
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 40,
   },
   modalText: {
-    marginBottom: 15,
+    marginBottom: 10,
     textAlign: 'center',
     fontSize: 18,
     fontWeight:'700',
@@ -93,6 +93,12 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '600',
     lineHeight: 19.04,
+  },modalSubText:{
+    fontSize: 14,
+    fontWeight: '400',
+    lineHeight: 19.04,
+    color: '#757575',
+    marginBottom: 10,
   }
 });
 
