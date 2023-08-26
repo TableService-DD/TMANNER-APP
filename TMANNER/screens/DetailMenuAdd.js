@@ -237,10 +237,7 @@ function DetailMenuAddScreen({ route, navigation  }) {
     return (
         <SafeAreaView style={styles.safeAreaContainer}>
             <View style={styles.container}>
-                <Header navigation={navigation} title="메뉴 수정" targetScreen="MenuEdit"/>
-                <TouchableOpacity style={styles.deleteBtn} onPress={() => navigation.navigate('Main')}>
-                    <Text style={styles.deleteText}>메뉴 삭제</Text>
-                </TouchableOpacity>
+                <Header navigation={navigation} title="메뉴 등록" targetScreen="MenuEdit"/>
             </View>
 
             <ScrollView keyboardShouldPersistTaps ='always' style={{flex: 1}}>
