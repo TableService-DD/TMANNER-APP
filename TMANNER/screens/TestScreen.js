@@ -5,6 +5,7 @@ import BackButton from "../components/BackButton";
 import CategoryItem from "../components/CategoryItem"; // Import the CategoryItem component
 
 function TestScreen() {
+  const [isEditMode, setIsEditMode] = useState(false);
   const [category, setCategory] = useState([
     "세트",
     "메인",
@@ -22,7 +23,7 @@ function TestScreen() {
         <BackButton
           title="카테고리 관리"
           description="메뉴판의 카테고리는 한글로 작성해주세요"
-          isEdit={true}
+          onEditPress={() => setIsEditMode(!isEditMode)} // 수정 버튼 클릭 시 상태 변경
         />
       </View>
 
@@ -30,7 +31,9 @@ function TestScreen() {
       <View style={styles.categoryList}>
         <FlatList
           data={category}
-          renderItem={({ item }) => <CategoryItem item={item} />}
+          renderItem={({ item }) => (
+            <CategoryItem item={item} isEditMode={isEditMode} />
+          )} // isEditMode 추가
           keyExtractor={(item, index) => index.toString()}
         />
       </View>

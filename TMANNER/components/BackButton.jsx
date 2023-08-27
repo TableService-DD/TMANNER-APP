@@ -4,7 +4,8 @@ import { useNavigation } from "@react-navigation/native";
 import Icon from "react-native-vector-icons/Entypo"; // Import the Entypo from react-native-vector-icons
 import { View } from "react-native";
 
-function BackButton({ title, description, isEdit }) {
+function BackButton({ title, description, onEditPress }) {
+  // isEdit 제거, onEditPress만 남김
   const navigation = useNavigation();
 
   return (
@@ -22,7 +23,8 @@ function BackButton({ title, description, isEdit }) {
           <Text style={styles.headerTitle}>{title}</Text>
           <Text style={styles.headerDesc}>{description}</Text>
         </View>
-        <TouchableOpacity style={styles.editButton}>
+        <TouchableOpacity style={styles.editButton} onPress={onEditPress}>
+          {/* onPress 추가 */}
           <Text style={styles.edit}>수정</Text>
         </TouchableOpacity>
       </View>
