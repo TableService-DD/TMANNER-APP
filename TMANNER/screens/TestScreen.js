@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { View, StyleSheet, SafeAreaView, FlatList } from "react-native";
-import { useNavigation } from "@react-navigation/native";
 import BackButton from "../components/BackButton";
 import CategoryItem from "../components/CategoryItem"; // Import the CategoryItem component
 
@@ -15,6 +14,13 @@ function TestScreen() {
     "음료",
     "주류",
   ]);
+
+  // 아이템 제거 함수
+  const onRemoveItem = (itemToRemove) => {
+    setCategory((prevCategory) =>
+      prevCategory.filter((item) => item !== itemToRemove)
+    );
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -32,14 +38,20 @@ function TestScreen() {
         <FlatList
           data={category}
           renderItem={({ item }) => (
-            <CategoryItem item={item} isEditMode={isEditMode} />
-          )} // isEditMode 추가
+            <CategoryItem
+              item={item}
+              isEditMode={isEditMode}
+              onRemove={onRemoveItem} // onRemove 핸들러 전달
+            />
+          )}
           keyExtractor={(item, index) => index.toString()}
         />
       </View>
     </SafeAreaView>
   );
 }
+
+// CategoryItem 컴포넌트는 수정할 필요가 없습니다.
 
 const styles = StyleSheet.create({
   container: {
