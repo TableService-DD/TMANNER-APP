@@ -25,7 +25,7 @@ function BackButton({ title, description, onEditPress }) {
         </View>
         <TouchableOpacity style={styles.editButton} onPress={onEditPress}>
           {/* onPress 추가 */}
-          <Text style={styles.edit}>수정</Text>
+          <Text style={styles.edit}>편집</Text>
         </TouchableOpacity>
       </View>
     </View>
