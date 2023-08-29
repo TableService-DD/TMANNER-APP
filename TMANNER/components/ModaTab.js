@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, Modal, StyleSheet, TouchableOpacity } from 'react-native';
 
-function ModalTab({ isVisible, onClose, onGo, outputText, subText }) {
+function ModalTab({ isVisible, onClose, onGo, outputText, subText, exitBtnText="닫기", viewBtnColor="black", viewBtnText="메뉴판 보러가기"}) {
   return (
     <Modal
       animationType="slide"
@@ -16,17 +16,18 @@ function ModalTab({ isVisible, onClose, onGo, outputText, subText }) {
           </View>
           <View style={styles.btnContainer}>
             <TouchableOpacity style={styles.exitBtn} onPress={onClose}>
-              <Text style={styles.exitBtnText}>닫기</Text>
+              <Text style={styles.exitBtnText}>{exitBtnText}</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.viewBtn} onPress={onGo}>
-              <Text style={styles.viewBtnText}>메뉴판 보러가기</Text>
+            <TouchableOpacity style={[styles.viewBtn, {backgroundColor: viewBtnColor}]} onPress={onGo}>
+              <Text style={styles.viewBtnText}>{viewBtnText}</Text>
             </TouchableOpacity>
           </View>
         </View>
       </View>
     </Modal>
   );
-} 
+}
+
 
 
 const styles = StyleSheet.create({
@@ -83,7 +84,6 @@ const styles = StyleSheet.create({
   viewBtn: {
     width: 132,
     height: 42,
-    backgroundColor: '#000',
     borderRadius: 100,
     justifyContent: 'center',
     alignItems: 'center'

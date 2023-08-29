@@ -13,7 +13,9 @@ function DetailMenuEditScreen({ route, navigation}) {
     const windowWidth = Dimensions.get('window').width;
     const menuItem = categories.flatMap(category => category.content).find(item => item.productId === productId);
 
+    const [deleteCheckModalVisible, setDeleteCheckModalVisible] = useState(false);
     const [deleteModalVisible, setDeleteModalVisible] = useState(false);
+
     // 선택된 상품이 속한 카테고리를 찾습니다.
     const selectedCategory = categories.find(category => category.content.some(item => item.productId === productId));
     const selectedCategoryName = selectedCategory ? selectedCategory.name : ""; 
@@ -36,6 +38,7 @@ function DetailMenuEditScreen({ route, navigation}) {
     };
     
     const [modalVisible, setModalVisible] = useState(false); //모달 상태
+    
 
     if (!menuItem) return <Text>메뉴를 찾을 수 없습니다.</Text>;
 
@@ -43,9 +46,29 @@ function DetailMenuEditScreen({ route, navigation}) {
         <SafeAreaView style={styles.safeAreaContainer}>
             <View style={styles.container}>
                 <Header navigation={navigation} title="메뉴 수정" targetScreen="MenuEdit"/>
-                <TouchableOpacity style={styles.deleteBtn} onPress={() => setDeleteModalVisible(true)}>
+                <TouchableOpacity style={styles.deleteBtn} onPress={() => setDeleteCheckModalVisible(true)}>
                     <Text style={styles.deleteText}>메뉴 삭제</Text> 
                 </TouchableOpacity>
+
+                <ModalTab 
+                    isVisible={deleteCheckModalVisible} 
+                    onClose={() => {
+                        setDeleteCheckModalVisible(false);
+                        navigation.goBack();
+                    }}
+                    onGo={() => {
+                        // 메뉴 삭제 기능을 여기에 추가하시면 됩니다.
+                        setDeleteCheckModalVisible(false);
+                        setDeleteModalVisible(true);
+                        // 예를 들어, navigation.goBack()을 사용하여 이전 화면으로 돌아가도록 할 수 있습니다.
+                        // navigation.goBack();
+                    }}
+                    outputText={"삭제된 메뉴는 복구가 어려워요."}
+                    subText={"그래도 삭제할까요?"}
+                    viewBtnText={"삭제하기"}
+                    viewBtnColor={"#FF3535"}
+                    exitBtnText={"취소하기"}
+                />
 
                 <ModalTab 
                     isVisible={deleteModalVisible} 
@@ -53,10 +76,12 @@ function DetailMenuEditScreen({ route, navigation}) {
                     onGo={() => {
                         // 메뉴 삭제 기능을 여기에 추가하시면 됩니다.
                         setDeleteModalVisible(false);
+                        navigation.navigate('Main');
                         // 예를 들어, navigation.goBack()을 사용하여 이전 화면으로 돌아가도록 할 수 있습니다.
                         // navigation.goBack();
                     }}
                     outputText={"사장님, 메뉴삭제가 완료되었어요."}
+                    exitBtnText={"닫기"}
                 />
 
 
@@ -195,6 +220,7 @@ function DetailMenuEditScreen({ route, navigation}) {
                 onGo={() => {
                 // 보러가기 버튼을 눌렀을 때 실행될 액션
                 setModalVisible(false);
+                navigation.navigate('Main');
                 // 다른 화면으로 이동하거나, 원하는 기능 추가
                 }}
                 outputText={"사장님, 메뉴 수정이 완료 되었어요."}

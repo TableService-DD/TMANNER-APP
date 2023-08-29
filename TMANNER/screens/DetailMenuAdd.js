@@ -249,7 +249,14 @@ function DetailMenuAddScreen({ route, navigation  }) {
                         </TouchableOpacity>
                     </View>
                     <View style={styles.middleContainer}>
-                        <View style={{ width: windowWidth - 40, height: (windowWidth - 40) * (350 / 350), backgroundColor:"#000", borderRadius:10 }} />
+                            <Image
+                            style={{
+                            width: windowWidth - 40,
+                            height: (windowWidth - 40) * (350 / 350),
+                            borderRadius: 10,
+                            }}
+                            source={require('../assets/source/imageAdd.png')} // 이미지 주소 입력
+                        />
                     </View>
                     <Text style={styles.subText}>(*정방향 비율을 권장합니다.)</Text>
 
@@ -386,6 +393,7 @@ function DetailMenuAddScreen({ route, navigation  }) {
                 onGo={() => {
                 // 보러가기 버튼을 눌렀을 때 실행될 액션
                 setModalVisible(false);
+                navigation.navigate('Main');
                 // 다른 화면으로 이동하거나, 원하는 기능 추가
                 }}
                 outputText={"사장님, 메뉴 등록이 완료 되었어요."}
