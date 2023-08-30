@@ -26,7 +26,7 @@ function DynamicScreenWrapper(tabBarImageSource, detailPageRoute) {
                                 <View style={styles.menuRightContainer}>
                                     <View style={styles.menuTextContainer}>
                                         <Text style={styles.menuName}>{menuItem.menuName}</Text>
-                                        <Text style={styles.menuPrice}>{menuItem.price}</Text>
+                                        <Text style={styles.menuPrice}>{menuItem.price}원</Text>
                                     </View>
                                     <Image source={tabBarImageSource} style={{ width: 22, height: 22}} />
                                 </View>    
@@ -43,7 +43,7 @@ function DynamicScreenWrapper(tabBarImageSource, detailPageRoute) {
                                 <Image source={menuItem.image} style={{ width: 100, height: 100 }} />
                                 <View style={styles.menuTextContainer}>
                                     <Text style={styles.menuName}>{menuItem.menuName}</Text>
-                                    <Text style={styles.menuPrice}>{menuItem.price}</Text>
+                                    <Text style={styles.menuPrice}>{menuItem.price}원</Text>
                                 </View>
                                 <Image source={tabBarImageSource} style={{ width: 22, height: 22 }} />
                             </View>
