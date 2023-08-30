@@ -16,6 +16,8 @@ import BackupScreen from './screens/BackupScreen';
 import DetailMenuEditScreen from './screens/DetailMenuEditScreen';
 import DetailMenuAddScreen from './screens/DetailMenuAdd';
 
+import SignScreen from './screens/SignScreen';
+
 const Stack = createNativeStackNavigator();
 LogBox.ignoreLogs(['Sending `onAnimatedValueUpdate` with no listeners registered.']);
 
@@ -35,6 +37,8 @@ function App() {
         <Stack.Screen name="Backup" component={BackupScreen}/>
         <Stack.Screen name="DetailMenuEdit" component={DetailMenuEditScreen}/>
         <Stack.Screen name="DetailMenuAdd" component={DetailMenuAddScreen}/>
+        <Stack.Screen name="Sign" component={SignScreen}/>
+        
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, View, Text, TextInput, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, TextInput, StyleSheet, TouchableOpacity, navigate } from "react-native";
 import { MaterialIcons } from '@expo/vector-icons';
 
 function LoginScreen({navigation}) {
@@ -59,7 +59,7 @@ function LoginScreen({navigation}) {
 
                 <View style={styles.signUpContainer}>
                     <Text>아직 띵동에 가입 안하셨나요?</Text>
-                    <TouchableOpacity style={styles.signUpButton} onPress={() => { /* 로그인 처리 */ }}>
+                    <TouchableOpacity style={styles.signUpButton} onPress={() => navigation.navigate('Sign')}>
                         <Text style={styles.signUpButtonText}>회원가입 하기</Text>
                     </TouchableOpacity>
                 </View>
