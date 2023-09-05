@@ -59,7 +59,7 @@ function LoginScreen({navigation}) {
 
                 <View style={styles.signUpContainer}>
                     <Text>아직 띵동에 가입 안하셨나요?</Text>
-                    <TouchableOpacity style={styles.signUpButton} onPress={() => navigation.navigate('Sign')}>
+                    <TouchableOpacity style={styles.signUpButton} onPress={() => navigation.navigate('SignupID')}>
                         <Text style={styles.signUpButtonText}>회원가입 하기</Text>
                     </TouchableOpacity>
                 </View>
