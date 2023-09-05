@@ -4,6 +4,7 @@ import { View, TouchableOpacity, Text} from 'react-native';
 
 import Header from "../../components/Header";
 import FormInput from '../../components/FormInput';
+import ModalTab from '../../components/ModaTab';
 
 function StoreBankNumber({navigation}) {
     const [modalVisible, setModalVisible] = useState(false); //모달 상태
@@ -20,14 +21,10 @@ function StoreBankNumber({navigation}) {
                 step="5"
                 StepBack="/5"
                 placeholder="계좌 입력하기"
-                buttonText="다음"
-                TargetScreen={'SignupPW'}
+                buttonText="완료"
                 isSecure={true}
-                showButton={false}
+                onButtonPress={() => setModalVisible(true)}
             />
-
-
-
             <ModalTab 
                 isVisible={modalVisible} 
                 onClose={() => {
@@ -37,7 +34,7 @@ function StoreBankNumber({navigation}) {
                 onGo={() => {
                 // 보러가기 버튼을 눌렀을 때 실행될 액션
                 setModalVisible(false);
-                navigation.navigate('StoreAddName');
+                navigation.navigate('Main');
                 // 다른 화면으로 이동하거나, 원하는 기능 추가
                 }}
                 outputText={"사장님, 가게정보 입력이 완료되었어요."}

@@ -3,12 +3,25 @@ import { View, TouchableOpacity, Text, TextInput, StyleSheet} from 'react-native
 
 //입력 받을 값 : GuideText, placeholder, step, buttonText, navigation
 
-function FormInput({ navigation, GuideText, step, StepBack='/4', placeholder,
-    buttonText, TargetScreen, isSecure=false, showButton =true}) {
+function FormInput({ navigation, GuideText, step, placeholder,
+    buttonText, TargetScreen, isSecure=false, 
+    showButton =true,
+    onButtonPress}) {
     //입력 값, 일종의 유효성 검사 느낌
 
+    //input value값 저장
     const [inputValue, setInputValue] = useState('');
+    //input 값이 
     const isInputEmpty = inputValue === '';
+
+    //기본 이벤트 동작 선언
+    const defaultOnPress = () => {
+        navigation.navigate({ name: TargetScreen });
+    };
+
+    //부모 컴포넌트에서 전달한 이벤트가 있으면 그것을 사용함, 없으면 defaultOnPress를 사용함
+    const handleButtonPress = onButtonPress || defaultOnPress;
+
     return (
         <View style={styles.Container}>
             <View style={styles.TextContainer}>
@@ -20,7 +33,7 @@ function FormInput({ navigation, GuideText, step, StepBack='/4', placeholder,
 
                 <View style={styles.StepContainer}>
                     <Text style={styles.StepFront}>{step}</Text>
-                    <Text style={styles.StepBack}>{StepBack}</Text>
+                    <Text style={styles.StepBack}>/4</Text>
                 </View>
             </View>
             <TextInput 
@@ -35,7 +48,7 @@ function FormInput({ navigation, GuideText, step, StepBack='/4', placeholder,
                     styles.CompleteButton,  
                     isInputEmpty ? styles.DisabledButton : styles.EnabledButton
                 ]}
-                onPress={() => navigation.navigate({ name: TargetScreen })}
+                onPress={handleButtonPress}
                 >
                 <Text style={styles.ButtonText}>{buttonText}</Text>
                 </TouchableOpacity>
