@@ -397,7 +397,7 @@ function DetailMenuAddScreen({ route, navigation  }) {
                 // 다른 화면으로 이동하거나, 원하는 기능 추가
                 }}
                 outputText={"사장님, 메뉴 등록이 완료 되었어요."}
-                subText={"앞으로도 많은 신메뉴 기대할게요!"}
+                subText={"포스기의 새로고침 버튼을 누르시면 확인 가능합니다. \n앞으로도 많은 신메뉴 기대할게요!"}
             />
         </SafeAreaView>
     );

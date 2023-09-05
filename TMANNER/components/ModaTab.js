@@ -12,7 +12,7 @@ function ModalTab({ isVisible, onClose, onGo, outputText, subText, exitBtnText="
         <View style={styles.modalView}>
           <View style={styles.modalTextContainer}>
             <Text style={styles.modalText}>{outputText}</Text>
-            <Text style={styles.modalSubText}>{subText}</Text>
+            < Text style={styles.modalSubText}>{subText}</Text>
           </View>
           <View style={styles.btnContainer}>
             <TouchableOpacity style={styles.exitBtn} onPress={onClose}>
@@ -38,23 +38,24 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,0.5)',
   },
   modalView: {
-    width: 330,
-    height: 170,
-    padding: 20,
+    width: '85%',
+    height: '21%',
     backgroundColor: 'white',
     borderRadius: 10,
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingTop: 30,
     paddingBottom: 22,
-    paddingHorizontal: 40,
+    paddingHorizontal: 30,
   },
   modalText: {
     marginBottom: 10,
     textAlign: 'center',
     fontSize: 18,
     fontWeight:'700',
-  },modalTextContainer:{
+  },
+  
+  modalTextContainer:{
     width: '100%',
     alignItems: 'start',
 
@@ -67,8 +68,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 60,
   },
   exitBtn: {
-    width: 132,
-    height: 42,
+    width: '90%',
+    height: '80%',
     backgroundColor: '#D9D9D9',
     borderRadius: 100,
     justifyContent: 'center',
@@ -82,8 +83,8 @@ const styles = StyleSheet.create({
     lineHeight: 19.04,  // 136% of 14px
   },
   viewBtn: {
-    width: 132,
-    height: 42,
+    width: '90%',
+    height: '80%',
     borderRadius: 100,
     justifyContent: 'center',
     alignItems: 'center'
