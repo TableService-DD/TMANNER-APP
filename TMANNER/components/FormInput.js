@@ -3,7 +3,7 @@ import { View, TouchableOpacity, Text, TextInput, StyleSheet} from 'react-native
 
 //입력 받을 값 : GuideText, placeholder, step, buttonText, navigation
 
-function FormInput({ navigation, GuideText, step, placeholder,
+function FormInput({ navigation, GuideText, step, StepBack='/4', placeholder,
     buttonText, TargetScreen, isSecure=false, showButton =true}) {
     //입력 값, 일종의 유효성 검사 느낌
 
@@ -20,7 +20,7 @@ function FormInput({ navigation, GuideText, step, placeholder,
 
                 <View style={styles.StepContainer}>
                     <Text style={styles.StepFront}>{step}</Text>
-                    <Text style={styles.StepBack}>/4</Text>
+                    <Text style={styles.StepBack}>{StepBack}</Text>
                 </View>
             </View>
             <TextInput 

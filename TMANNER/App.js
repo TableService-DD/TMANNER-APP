@@ -5,21 +5,25 @@ import { LogBox } from 'react-native';
 
 
 // Import the screens
-import HomeScreen from './screens/HomeScreen';
-import DetailsScreen from './screens/DetailsScreen';
-import LoginScreen from './screens/LoginScreen';
-import MainScreen from './screens/MainScreen';
-import SoldOutScreen from './screens/SoldOutScreen';
-import MenuEditScreen from './screens/MenuEditScreen';
-import TestScreen from './screens/TestScreen';
-import BackupScreen from './screens/BackupScreen';
-import DetailMenuEditScreen from './screens/DetailMenuEditScreen';
-import DetailMenuAddScreen from './screens/DetailMenuAdd';
-import SignupIDScreen from './screens/SignupIDScreen';
-import SignupPWScreen from './screens/SignupPWScreen';
-import SignupPWConfirmScreen from './screens/SignupPWConfirmScreen';
-import UserVerificationScreen from './screens/UserVerificationScreen';
+import Home from './screens/Home';
+import Login from './screens/Login';
+import Main from './screens/Main';
+import SoldOut from './screens/SoldOut';
+import MenuEdit from './screens/MenuEdit';
+import Test from './screens/Test';
+import Backup from './screens/Backup';
+import DetailMenuEdit from './screens/DetailMenuEdit';
+import DetailMenuAdd from './screens/DetailMenuAdd';
 
+import SignupID from './screens/Registration/SignupID';
+import SignupPW from './screens/Registration/SignupPW';
+import SignupPWConfirm from './screens/Registration/SignupPWConfirm';
+import UserVerification from './screens/Registration/UserVerification';
+import StoreAddName from './screens/Registration/StoreAddName';
+import StoreAddStoreName from './screens/Registration/StoreAddStoreName';
+import StoreNumber from './screens/Registration/StoreNumber';
+import StoreBank from './screens/Registration/StoreBank';
+import StoreBankNumber from './screens/Registration/StoreBankNumber';
 
 const Stack = createNativeStackNavigator();
 LogBox.ignoreLogs(['Sending `onAnimatedValueUpdate` with no listeners registered.']);
@@ -28,23 +32,27 @@ LogBox.ignoreLogs(['Sending `onAnimatedValueUpdate` with no listeners registered
 function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home" screenOptions={{ headerShown: false }}>
+      <Stack.Navigator initialRouteName="StoreAddName" screenOptions={{ headerShown: false }}>
         {/* <Stack.Screen name="Home" component={HomeScreen} options={{ title: 'Overview' }}/> */}
-        <Stack.Screen name="Home" component={HomeScreen}/>
-        <Stack.Screen name="Details" component={DetailsScreen} />
-        <Stack.Screen name="Login" component={LoginScreen} />
-        <Stack.Screen name="Main" component={MainScreen}/>
-        <Stack.Screen name="SoldOut" component={SoldOutScreen}/>
-        <Stack.Screen name="MenuEdit" component={MenuEditScreen}/>
-        <Stack.Screen name="Test" component={TestScreen}/>
-        <Stack.Screen name="Backup" component={BackupScreen}/>
-        <Stack.Screen name="DetailMenuEdit" component={DetailMenuEditScreen}/>
-        <Stack.Screen name="DetailMenuAdd" component={DetailMenuAddScreen}/>
-        <Stack.Screen name="SignupID" component={SignupIDScreen} />
-        <Stack.Screen name="SignupPW" component={SignupPWScreen} />
-        <Stack.Screen name="SignupPWConfirm" component={SignupPWConfirmScreen} />
-        <Stack.Screen name="UserVerification" component={UserVerificationScreen} />
+        <Stack.Screen name="Home" component={Home}/>
+        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="Main" component={Main}/>
+        <Stack.Screen name="SoldOut" component={SoldOut}/>
+        <Stack.Screen name="MenuEdit" component={MenuEdit}/>
+        <Stack.Screen name="Test" component={Test}/>
+        <Stack.Screen name="Backup" component={Backup}/>
+        <Stack.Screen name="DetailMenuEdit" component={DetailMenuEdit}/>
+        <Stack.Screen name="DetailMenuAdd" component={DetailMenuAdd}/>
         
+        <Stack.Screen name="SignupID" component={SignupID} />
+        <Stack.Screen name="SignupPW" component={SignupPW} />
+        <Stack.Screen name="SignupPWConfirm" component={SignupPWConfirm} />
+        <Stack.Screen name="UserVerification" component={UserVerification} />
+        <Stack.Screen name="StoreAddName" component={StoreAddName} />
+        <Stack.Screen name="StoreAddStoreName" component={StoreAddStoreName} />
+        <Stack.Screen name="StoreNumber" component={StoreNumber} />
+        <Stack.Screen name="StoreBank" component={StoreBank} />
+        <Stack.Screen name="StoreBankNumber" component={StoreBankNumber} />
       </Stack.Navigator>
     </NavigationContainer>
   );

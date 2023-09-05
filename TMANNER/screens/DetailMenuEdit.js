@@ -8,7 +8,7 @@ import { SelectList } from 'react-native-dropdown-select-list';
 
 import ModalTab from '../components/ModaTab';
 
-function DetailMenuEditScreen({ route, navigation}) {
+function DetailMenuEdit({ route, navigation}) {
     const { productId } = route.params;
     const windowWidth = Dimensions.get('window').width;
     const menuItem = categories.flatMap(category => category.content).find(item => item.productId === productId);
@@ -425,4 +425,4 @@ const styles = StyleSheet.create({
         fontSize: 16,   
     }
 });
-export default DetailMenuEditScreen;
+export default DetailMenuEdit;

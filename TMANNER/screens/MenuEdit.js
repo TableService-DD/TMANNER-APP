@@ -11,7 +11,7 @@ import { LogBox } from 'react-native';
 LogBox.ignoreLogs(['Encountered two children with the same key']);
 
 
-function MenuEditScreen({ navigation }) {
+function MenuEdit({ navigation }) {
     return (
         <SafeAreaView style={styles.safeAreaContainer}>
             {/* 상단 헤더  */}
@@ -38,4 +38,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default MenuEditScreen;
+export default MenuEdit;

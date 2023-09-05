@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View, Text, TextInput, StyleSheet, TouchableOpacity, navigate } from "react-native";
 import { MaterialIcons } from '@expo/vector-icons';
 
-function LoginScreen({navigation}) {
+function Login({navigation}) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [isChecked, setChecked] = useState(false);
@@ -158,4 +158,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default LoginScreen;
+export default Login;

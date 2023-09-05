@@ -2,7 +2,7 @@ import React from "react";
 import { Image, View, Text, StyleSheet, ScrollView, TouchableOpacity  } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-function MainScreen(props) {
+function Main(props) {
     const navigation = useNavigation();
 
 
@@ -174,4 +174,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default MainScreen;
+export default Main;

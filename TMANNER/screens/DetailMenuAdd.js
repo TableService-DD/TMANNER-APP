@@ -8,7 +8,7 @@ import { SelectList } from 'react-native-dropdown-select-list';
 
 import ModalTab from '../components/ModaTab';
 
-function DetailMenuAddScreen({ route, navigation  }) {
+function DetailMenuAdd({ route, navigation  }) {
     const windowWidth = Dimensions.get('window').width;
 
 
@@ -403,4 +403,4 @@ function DetailMenuAddScreen({ route, navigation  }) {
     );
 }
 
-export default DetailMenuAddScreen;
+export default DetailMenuAdd;

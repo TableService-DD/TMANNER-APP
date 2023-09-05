@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, View, TouchableWithoutFeedback, Image } from "react-native";
 
-function HomeScreen({ navigation }) {
+function Home({ navigation }) {
     const navigateToDetails = () => {
       navigation.navigate('Login', {
         itemId: 86,
@@ -41,4 +41,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default HomeScreen;
+export default Home;

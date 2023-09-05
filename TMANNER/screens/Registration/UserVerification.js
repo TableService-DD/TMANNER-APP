@@ -2,9 +2,10 @@ import React, {useState} from 'react';
 import { StyleSheet, SafeAreaView} from 'react-native';
 import { View, TouchableOpacity, Text, TextInput} from 'react-native';
 
-import Header from "../components/Header";
+import Header from "../../components/Header";
+import ModalTab from '../../components/ModaTab';
 
-function UserVerificationScreen({navigation}) {
+function UserVerification({navigation}) {
     //입력값 여부 확인
     const [inputValue, setInputValue] = useState(''); //전화번호 INPUT BOX
     const [isVerified, setIsVerified] = useState(''); //인증번호 INPUT BOX
@@ -13,6 +14,7 @@ function UserVerificationScreen({navigation}) {
     const isInputValid = inputValue.length === 11; //전화번호 11자리
     const isVerifiedValid = isVerified.length === 4; //인증번호 4자리
 
+    const [modalVisible, setModalVisible] = useState(false); //모달 상태
     return (
         <SafeAreaView style={styles.safeAreaContainer}>
             <Header 
@@ -67,7 +69,8 @@ function UserVerificationScreen({navigation}) {
                                 isVerifiedValid ? styles.EnabledButton : styles.DisabledButton,
                             ]}
                             disabled={!isVerifiedValid}
-                            onPress={() => navigation.navigate({ name: 'SignupID' })}
+                            
+                            onPress={() => setModalVisible(true)}
                         >
                             <Text style={styles.ButtonText}>입력 완료</Text>
                         </TouchableOpacity>
@@ -75,6 +78,22 @@ function UserVerificationScreen({navigation}) {
                 )}
                 
             </View>
+            <ModalTab 
+                isVisible={modalVisible} 
+                onClose={() => {
+                    setModalVisible(false);
+                    navigation.navigate('Main');
+                }}
+                onGo={() => {
+                // 보러가기 버튼을 눌렀을 때 실행될 액션
+                setModalVisible(false);
+                navigation.navigate('StoreAddName');
+                // 다른 화면으로 이동하거나, 원하는 기능 추가
+                }}
+                outputText={"사장님, 회원가입이 완료되었어요."}
+                subText={"앞으로 띵동과 함께 해주세요!"}
+                viewBtnText='가게정보 입력하기'
+                    />
         </SafeAreaView>
     );
 }
@@ -199,4 +218,4 @@ const styles = StyleSheet.create({
       }
 });
 
-export default UserVerificationScreen;
+export default UserVerification;
