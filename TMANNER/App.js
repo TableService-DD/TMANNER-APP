@@ -32,7 +32,7 @@ LogBox.ignoreLogs(['Sending `onAnimatedValueUpdate` with no listeners registered
 function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="StoreAddName" screenOptions={{ headerShown: false }}>
+      <Stack.Navigator initialRouteName="Home" screenOptions={{ headerShown: false }}>
         {/* <Stack.Screen name="Home" component={HomeScreen} options={{ title: 'Overview' }}/> */}
         <Stack.Screen name="Home" component={Home}/>
         <Stack.Screen name="Login" component={Login} />

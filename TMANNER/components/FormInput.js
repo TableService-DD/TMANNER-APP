@@ -1,10 +1,9 @@
 import React, {useState} from 'react';
 import { View, TouchableOpacity, Text, TextInput, StyleSheet} from 'react-native';
 
-//입력 받을 값 : GuideText, placeholder, step, buttonText, navigation
 
 function FormInput({ navigation, GuideText, step, placeholder,
-    buttonText, TargetScreen, isSecure=false, 
+    buttonText, TargetScreen='', isSecure=false, 
     showButton =true,
     onButtonPress}) {
     //입력 값, 일종의 유효성 검사 느낌
@@ -19,9 +18,20 @@ function FormInput({ navigation, GuideText, step, placeholder,
         navigation.navigate({ name: TargetScreen });
     };
 
-    //부모 컴포넌트에서 전달한 이벤트가 있으면 그것을 사용함, 없으면 defaultOnPress를 사용함
-    const handleButtonPress = onButtonPress || defaultOnPress;
-
+    //버튼 눌렀을 때 동작
+    const handleButtonPress = () => {
+        if (isInputEmpty) {
+            alert('입력이 비어있습니다.');
+            return;
+        }
+        if (onButtonPress) {
+            onButtonPress(inputValue);
+            console.log('전달 완료', inputValue);
+        } else {
+            defaultOnPress();
+        }
+    };
+    
     return (
         <View style={styles.Container}>
             <View style={styles.TextContainer}>

@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, SafeAreaView,} from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
-import categories from '../assets/data/data';
+import menuData from '../assets/data/menu.json';
 import Header from "../components/Header";
 import TabNavigator from "../components/TabNavigator";
 
@@ -20,7 +20,7 @@ function SoldOutTabs({ navigation }) {
 
             {/* 네비게이션바 */}
             <TabNavigator 
-            categories={categories}
+            categories={menuData.products}
             tabBarImageSource={require('../assets/source/editBtn.png')}
             detailPageRoute={'None'} />
         </SafeAreaView>

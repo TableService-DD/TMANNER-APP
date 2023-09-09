@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import { StyleSheet, SafeAreaView} from 'react-native';
 import { View, TouchableOpacity, Text, TextInput} from 'react-native';
 
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import Header from "../../components/Header";
 import ModalTab from '../../components/ModaTab';
 
@@ -15,6 +17,16 @@ function UserVerification({navigation}) {
     const isVerifiedValid = isVerified.length === 4; //인증번호 4자리
 
     const [modalVisible, setModalVisible] = useState(false); //모달 상태
+
+    const savePhoneNumberToStorage = async (phoneNum) => {
+        try {
+            await AsyncStorage.setItem('user_phoneNum', phoneNum);
+            console.log('저장된 전화번호',phoneNum); 
+        } catch (e) {
+            alert('Error saving PW to storage');
+        }
+    };
+
     return (
         <SafeAreaView style={styles.safeAreaContainer}>
             <Header 
@@ -70,7 +82,11 @@ function UserVerification({navigation}) {
                             ]}
                             disabled={!isVerifiedValid}
                             
-                            onPress={() => setModalVisible(true)}
+                            onPress={() => {
+                                savePhoneNumberToStorage(inputValue); 
+                                setModalVisible(true);
+                                }
+                            }
                         >
                             <Text style={styles.ButtonText}>입력 완료</Text>
                         </TouchableOpacity>

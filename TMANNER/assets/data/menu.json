@@ -1,0 +1,284 @@
+{
+    "store_code" : 1,
+    "products" : [
+        {
+            "category" : "메인",
+            "items" : [
+                {
+                    "menuName" : "해물육개장칼국수",
+                    "price" : 22900,
+                    "status" : true,
+                    "image" : "../source/menu1.png",
+                    "menuIntro" : "이것은 맛있는 짜파게티 계란 치즈입니다."
+                },
+                {
+                    "menuName" : "바지락술찜 파스타",
+                    "price" : 18900,
+                    "status" : false,
+                    "image" : "../source/menu1.png",
+                    "menuIntro" : "이것은 맛있는 짜파게티 계란 치즈입니다."
+                },
+                {
+                    "menuName" : "부추훈제오리구이",
+                    "price" : 18900,
+                    "status" : false,
+                    "image" : "../source/menu1.png",
+                    "menuIntro" : "이것은 맛있는 짜파게티 계란 치즈입니다."
+                },
+                {
+                    "menuName" : "두부김치",
+                    "price" : 18900,
+                    "status" : false,
+                    "image" : "../source/menu1.png",
+                    "menuIntro" : "이것은 맛있는 두부김치입니다."
+                },
+                {
+                    "menuName" : "된장찌개",
+                    "price" : 18900,
+                    "status" : false,
+                    "image" : "../source/menu1.png",
+                    "menuIntro" : "이것은 맛있는 된장찌개입니다."
+                },
+                {
+                    "menuName" : "육개장",
+                    "price" : 14900,
+                    "status" : true,
+                    "image" : "../source/menu1.png",
+                    "menuIntro" : "이것은 맛있는 육개장입니다."
+                }                
+            ]
+        },{
+            "category" : "사이드",
+            "items" : [
+                {
+                    "menuName" : "통닭크림파스타",
+                    "price" : 22900,
+                    "status" : true,
+                    "image" : "../source/menu1.png",
+                    "menuIntro" : "이것은 맛있는 짜파게티 계란 치즈입니다."
+                },
+                {
+                    "menuName" : "바지락술찜 파스타",
+                    "price" : 18900,
+                    "status" : false,
+                    "image" : "../source/menu1.png",
+                    "menuIntro" : "이것은 맛있는 짜파게티 계란 치즈입니다."
+                },
+                {
+                    "menuName" : "부추훈제오리구이",
+                    "price" : 18900,
+                    "status" : false,
+                    "image" : "../source/menu1.png",
+                    "menuIntro" : "이것은 맛있는 짜파게티 계란 치즈입니다."
+                },
+                {
+                    "menuName" : "두부김치",
+                    "price" : 18900,
+                    "status" : false,
+                    "image" : "../source/menu1.png",
+                    "menuIntro" : "이것은 맛있는 두부김치입니다."
+                },
+                {
+                    "menuName" : "된장찌개",
+                    "price" : 18900,
+                    "status" : false,
+                    "image" : "../source/menu1.png",
+                    "menuIntro" : "이것은 맛있는 된장찌개입니다."
+                },
+                {
+                    "menuName" : "육개장",
+                    "price" : 14900,
+                    "status" : true,
+                    "image" : "../source/menu1.png",
+                    "menuIntro" : "이것은 맛있는 육개장입니다."
+                }                
+            ]
+        },{
+            "category" : "탕류",
+            "items" : [
+                {
+                    "menuName" : "통닭크림파스타",
+                    "price" : 22900,
+                    "status" : true,
+                    "image" : "../source/menu1.png",
+                    "menuIntro" : "이것은 맛있는 짜파게티 계란 치즈입니다."
+                },
+                {
+                    "menuName" : "바지락술찜 파스타",
+                    "price" : 18900,
+                    "status" : false,
+                    "image" : "../source/menu1.png",
+                    "menuIntro" : "이것은 맛있는 짜파게티 계란 치즈입니다."
+                },
+                {
+                    "menuName" : "부추훈제오리구이",
+                    "price" : 18900,
+                    "status" : false,
+                    "image" : "../source/menu1.png",
+                    "menuIntro" : "이것은 맛있는 짜파게티 계란 치즈입니다."
+                },
+                {
+                    "menuName" : "두부김치",
+                    "price" : 18900,
+                    "status" : false,
+                    "image" : "../source/menu1.png",
+                    "menuIntro" : "이것은 맛있는 두부김치입니다."
+                },
+                {
+                    "menuName" : "된장찌개",
+                    "price" : 18900,
+                    "status" : false,
+                    "image" : "../source/menu1.png",
+                    "menuIntro" : "이것은 맛있는 된장찌개입니다."
+                },
+                {
+                    "menuName" : "육개장",
+                    "price" : 14900,
+                    "status" : true,
+                    "image" : "../source/menu1.png",
+                    "menuIntro" : "이것은 맛있는 육개장입니다."
+                }                
+            ]
+        },{
+            "category" : "튀김류",
+            "items" : [
+                {
+                    "menuName" : "통닭크림파스타",
+                    "price" : 22900,
+                    "status" : true,
+                    "image" : "../source/menu1.png",
+                    "menuIntro" : "이것은 맛있는 짜파게티 계란 치즈입니다."
+                },
+                {
+                    "menuName" : "바지락술찜 파스타",
+                    "price" : 18900,
+                    "status" : false,
+                    "image" : "../source/menu1.png",
+                    "menuIntro" : "이것은 맛있는 짜파게티 계란 치즈입니다."
+                },
+                {
+                    "menuName" : "부추훈제오리구이",
+                    "price" : 18900,
+                    "status" : false,
+                    "image" : "../source/menu1.png",
+                    "menuIntro" : "이것은 맛있는 짜파게티 계란 치즈입니다."
+                },
+                {
+                    "menuName" : "두부김치",
+                    "price" : 18900,
+                    "status" : false,
+                    "image" : "../source/menu1.png",
+                    "menuIntro" : "이것은 맛있는 두부김치입니다."
+                },
+                {
+                    "menuName" : "된장찌개",
+                    "price" : 18900,
+                    "status" : false,
+                    "image" : "../source/menu1.png",
+                    "menuIntro" : "이것은 맛있는 된장찌개입니다."
+                },
+                {
+                    "menuName" : "육개장",
+                    "price" : 14900,
+                    "status" : true,
+                    "image" : "../source/menu1.png",
+                    "menuIntro" : "이것은 맛있는 육개장입니다."
+                }                
+            ]
+        },{
+            "category" : "주류",
+            "items" : [
+                {
+                    "menuName" : "통닭크림파스타",
+                    "price" : 22900,
+                    "status" : true,
+                    "image" : "../source/menu1.png",
+                    "menuIntro" : "이것은 맛있는 짜파게티 계란 치즈입니다."
+                },
+                {
+                    "menuName" : "바지락술찜 파스타",
+                    "price" : 18900,
+                    "status" : false,
+                    "image" : "../source/menu1.png",
+                    "menuIntro" : "이것은 맛있는 짜파게티 계란 치즈입니다."
+                },
+                {
+                    "menuName" : "부추훈제오리구이",
+                    "price" : 18900,
+                    "status" : false,
+                    "image" : "../source/menu1.png",
+                    "menuIntro" : "이것은 맛있는 짜파게티 계란 치즈입니다."
+                },
+                {
+                    "menuName" : "두부김치",
+                    "price" : 18900,
+                    "status" : false,
+                    "image" : "../source/menu1.png",
+                    "menuIntro" : "이것은 맛있는 두부김치입니다."
+                },
+                {
+                    "menuName" : "된장찌개",
+                    "price" : 18900,
+                    "status" : false,
+                    "image" : "../source/menu1.png",
+                    "menuIntro" : "이것은 맛있는 된장찌개입니다."
+                },
+                {
+                    "menuName" : "육개장",
+                    "price" : 14900,
+                    "status" : true,
+                    "image" : "../source/menu1.png",
+                    "menuIntro" : "이것은 맛있는 육개장입니다."
+                }                
+            ]
+        },{
+            "category" : "기타",
+            "items" : [
+                {
+                    "menuName" : "통닭크림파스타",
+                    "price" : 22900,
+                    "status" : true,
+                    "image" : "../source/menu1.png",
+                    "menuIntro" : "이것은 맛있는 짜파게티 계란 치즈입니다."
+                },
+                {
+                    "menuName" : "바지락술찜 파스타",
+                    "price" : 18900,
+                    "status" : false,
+                    "image" : "../source/menu1.png",
+                    "menuIntro" : "이것은 맛있는 짜파게티 계란 치즈입니다."
+                },
+                {
+                    "menuName" : "부추훈제오리구이",
+                    "price" : 18900,
+                    "status" : false,
+                    "image" : "../source/menu1.png",
+                    "menuIntro" : "이것은 맛있는 짜파게티 계란 치즈입니다."
+                },
+                {
+                    "menuName" : "두부김치",
+                    "price" : 18900,
+                    "status" : false,
+                    "image" : "../source/menu1.png",
+                    "menuIntro" : "이것은 맛있는 두부김치입니다."
+                },
+                {
+                    "menuName" : "된장찌개",
+                    "price" : 18900,
+                    "status" : false,
+                    "image" : "../source/menu1.png",
+                    "menuIntro" : "이것은 맛있는 된장찌개입니다."
+                },
+                {
+                    "menuName" : "육개장",
+                    "price" : 14900,
+                    "status" : true,
+                    "image" : "../source/menu1.png",
+                    "menuIntro" : "이것은 맛있는 육개장입니다."
+                }                
+            ]
+        }
+        
+    ]
+   
+}

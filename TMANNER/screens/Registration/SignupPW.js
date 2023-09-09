@@ -1,11 +1,23 @@
 import React from 'react';
 import { StyleSheet, SafeAreaView} from 'react-native';
 
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import Header from "../../components/Header";
 import FormInput from '../../components/FormInput';
 
 function SignupPW({navigation}) {
 
+    //PW localStg에 저장
+    const savePWToStorage = async (pw) => {
+        try {
+            await AsyncStorage.setItem('user_pw', pw);
+            console.log('저장된 PW',pw);
+            navigation.navigate('SignupPWConfirm');
+        } catch (e) {
+            alert('Error saving PW to storage');
+        }
+    };
     return (
         <SafeAreaView style={styles.safeAreaContainer}>
             <Header 
@@ -21,6 +33,7 @@ function SignupPW({navigation}) {
                 buttonText="입력 완료"
                 TargetScreen={'SignupPWConfirm'}
                 isSecure={true}
+                onButtonPress={savePWToStorage}
             />
         </SafeAreaView>
     );

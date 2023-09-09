@@ -56,7 +56,7 @@ const categories = [
     content: [
         {   
             productId: '08',
-            menuName: '통닭 크림 파스타',
+            menuName: '통닭크림파스타',
             price: '22,900',
             status: true,
             image: require('../source/menu1.png'),
