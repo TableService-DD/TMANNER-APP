@@ -15,6 +15,7 @@ import Backup from './screens/Backup';
 import DetailMenuEdit from './screens/DetailMenuEdit';
 import DetailMenuAdd from './screens/DetailMenuAdd';
 
+import SignupName from './screens/Registration/SignupName';
 import SignupID from './screens/Registration/SignupID';
 import SignupPW from './screens/Registration/SignupPW';
 import SignupPWConfirm from './screens/Registration/SignupPWConfirm';
@@ -44,6 +45,7 @@ function App() {
         <Stack.Screen name="DetailMenuEdit" component={DetailMenuEdit}/>
         <Stack.Screen name="DetailMenuAdd" component={DetailMenuAdd}/>
         
+        <Stack.Screen name="SignupName" component={SignupName} />
         <Stack.Screen name="SignupID" component={SignupID} />
         <Stack.Screen name="SignupPW" component={SignupPW} />
         <Stack.Screen name="SignupPWConfirm" component={SignupPWConfirm} />

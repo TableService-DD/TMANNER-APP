@@ -43,7 +43,7 @@ function FormInput({ navigation, GuideText, step, placeholder,
 
                 <View style={styles.StepContainer}>
                     <Text style={styles.StepFront}>{step}</Text>
-                    <Text style={styles.StepBack}>/4</Text>
+                    <Text style={styles.StepBack}>/5</Text>
                 </View>
             </View>
             <TextInput 

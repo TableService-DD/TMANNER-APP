@@ -7,17 +7,17 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import Header from "../../components/Header";
 import FormInput from '../../components/FormInput';
 
-function SignupID({navigation}) {
+function SignupName({navigation}) {
 
     //ID localStg에 저장 
-    const saveIDToStorage = async (id) => {
+    const saveNameToStorage = async (name) => {
         try {
             //로컬스토리지에 user_id key값으로 저장
-            await AsyncStorage.setItem('user_id', id);
-            console.log('저장된 ID', id);
-            navigation.navigate('SignupPW'); // Navigate to the next screen
+            await AsyncStorage.setItem('user_name', name);
+            console.log('저장된 Name', name);
+            navigation.navigate('SignupID'); // Navigate to the next screen
         } catch (e) {
-            alert('Error saving ID to storage');
+            alert('Error saving Name to storage');
         }
     };
 
@@ -26,17 +26,17 @@ function SignupID({navigation}) {
             <Header
                 navigation={navigation}
                 title="회원가입"
-                targetScreen={'SignName'}
+                targetScreen={'Login'}
             />
 
             <FormInput
                 navigation={navigation}
-                GuideText="로그인에 사용할\n아이디를 입력해주세요"
+                GuideText="로그인에 사용할\n이름을 입력해주세요"
                 step="1"
-                placeholder="아이디"
+                placeholder="이름"
                 buttonText="입력 완료"
-                TargetScreen={'SignupPW'}
-                onButtonPress={saveIDToStorage}
+                TargetScreen={'SignupID'}
+                onButtonPress={saveNameToStorage}
             />
         </SafeAreaView>
     );
@@ -49,4 +49,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default SignupID;
+export default SignupName;

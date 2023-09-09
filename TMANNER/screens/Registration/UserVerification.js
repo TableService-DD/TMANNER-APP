@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import { StyleSheet, SafeAreaView} from 'react-native';
 import { View, TouchableOpacity, Text, TextInput} from 'react-native';
 
+import { RegisterUser } from '../../api/user';  // API 파일 경로를 적절하게 변경해주세요.
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import Header from "../../components/Header";
@@ -21,11 +22,36 @@ function UserVerification({navigation}) {
     const savePhoneNumberToStorage = async (phoneNum) => {
         try {
             await AsyncStorage.setItem('user_phoneNum', phoneNum);
-            console.log('저장된 전화번호',phoneNum); 
+
+            id = await AsyncStorage.getItem('user_id');
+            pw = await AsyncStorage.getItem('user_pw');
+            name = await AsyncStorage.getItem('user_name');
+
+            console.log('name',name);
+            console.log('id',id);
+            console.log('pw',pw);
+            console.log('phoneNum',phoneNum); 
+
         } catch (e) {
             alert('Error saving PW to storage');
         }
     };
+
+    const handleRegistration = async () => {
+        const user_id = await AsyncStorage.getItem('user_id');
+        const user_pw = await AsyncStorage.getItem('user_pw');
+        const user_name = await AsyncStorage.getItem('user_name');
+        const user_phone = inputValue;
+        const user_email = "user@example.com";  // 임의로 설정한 값입니다.
+        const isSuccess = await RegisterUser({ user_id, user_pw, user_name, user_phone, user_email });
+
+        if (isSuccess) {
+            savePhoneNumberToStorage(inputValue);
+            setModalVisible(true);
+        } else {
+            alert('사용자 등록에 실패했습니다.');
+        }
+    }
 
     return (
         <SafeAreaView style={styles.safeAreaContainer}>
@@ -81,15 +107,11 @@ function UserVerification({navigation}) {
                                 isVerifiedValid ? styles.EnabledButton : styles.DisabledButton,
                             ]}
                             disabled={!isVerifiedValid}
-                            
-                            onPress={() => {
-                                savePhoneNumberToStorage(inputValue); 
-                                setModalVisible(true);
-                                }
-                            }
+                            onPress={handleRegistration}
                         >
                             <Text style={styles.ButtonText}>입력 완료</Text>
                         </TouchableOpacity>
+
                     </View>
                 )}
                 

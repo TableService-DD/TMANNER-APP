@@ -8,7 +8,7 @@ import FormInput from '../../components/FormInput';
 
 function SignupPW({navigation}) {
 
-    //PW localStg에 저장
+    //PW localStorage에 저장
     const savePWToStorage = async (pw) => {
         try {
             await AsyncStorage.setItem('user_pw', pw);
@@ -23,7 +23,7 @@ function SignupPW({navigation}) {
             <Header 
                 navigation={navigation}
                 title="회원가입"
-                targetScreen={'Login'} />
+                targetScreen={'SignID'} />
 
             <FormInput 
                 navigation={navigation}

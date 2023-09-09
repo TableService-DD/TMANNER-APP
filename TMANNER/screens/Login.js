@@ -2,10 +2,22 @@ import React, { useState } from "react";
 import { View, Text, TextInput, StyleSheet, TouchableOpacity, navigate } from "react-native";
 import { MaterialIcons } from '@expo/vector-icons';
 
+import { loginUser } from "../api/user";
+
 function Login({navigation}) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [isChecked, setChecked] = useState(false);
+
+    const handleLogin = async () => {
+        const success = await loginUser({ user_id: email, user_pw: password });
+        if (success) {
+            navigation.navigate('Main');
+        } else {
+            // 실패 시 사용자에게 알림을 제공하는 코드 (예: alert 사용)
+            alert('로그인 실패. 이메일 또는 비밀번호를 확인해주세요.');
+        }
+    };
 
     return (
         <View style={styles.container}>
@@ -53,13 +65,13 @@ function Login({navigation}) {
                         </TouchableOpacity>
                     </View>
 
-                <TouchableOpacity style={styles.loginButton} onPress={() => navigation.navigate('Main')}>
+                <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
                     <Text style={styles.loginButtonText}>로그인하기</Text>
                 </TouchableOpacity>
 
                 <View style={styles.signUpContainer}>
                     <Text>아직 띵동에 가입 안하셨나요?</Text>
-                    <TouchableOpacity style={styles.signUpButton} onPress={() => navigation.navigate('SignupID')}>
+                    <TouchableOpacity style={styles.signUpButton} onPress={() => navigation.navigate('SignupName')}>
                         <Text style={styles.signUpButtonText}>회원가입 하기</Text>
                     </TouchableOpacity>
                 </View>
