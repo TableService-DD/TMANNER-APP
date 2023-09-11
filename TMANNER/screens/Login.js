@@ -1,16 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, TextInput, StyleSheet, TouchableOpacity, navigate } from "react-native";
 import { MaterialIcons } from '@expo/vector-icons';
 
 import { loginUser } from "../api/user";
 
 function Login({navigation}) {
-    const [email, setEmail] = useState("");
+    const [id, setId] = useState("");
     const [password, setPassword] = useState("");
     const [isChecked, setChecked] = useState(false);
+    const [isInputFilled, setInputFilled] = useState(false);
+
+    useEffect(() => {
+        if(id.trim() && password.trim()) {
+            setInputFilled(true);
+        } else {
+            setInputFilled(false);
+        }
+    }, [id, password]);
 
     const handleLogin = async () => {
-        const success = await loginUser({ user_id: email, user_pw: password });
+        const success = await loginUser({ user_id: id, user_pw: password });
         if (success) {
             navigation.navigate('Main');
         } else {
@@ -26,10 +35,9 @@ function Login({navigation}) {
 
                 <TextInput
                     style={styles.input}
-                    placeholder="이메일"
-                    onChangeText={setEmail}
-                    value={email}
-                    keyboardType="email-address"
+                    placeholder="아이디"
+                    onChangeText={setId}
+                    value={id}
                     autoCapitalize="none"
                 />
 
@@ -65,9 +73,13 @@ function Login({navigation}) {
                         </TouchableOpacity>
                     </View>
 
-                <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
-                    <Text style={styles.loginButtonText}>로그인하기</Text>
-                </TouchableOpacity>
+                    <TouchableOpacity 
+                        style={[styles.loginButton, isInputFilled ? { backgroundColor: '#000' } : { backgroundColor: '#D1D1D1' }]} 
+                        onPress={handleLogin}
+                    >
+                        <Text style={styles.loginButtonText}>로그인하기</Text>
+                    </TouchableOpacity>
+
 
                 <View style={styles.signUpContainer}>
                     <Text>아직 띵동에 가입 안하셨나요?</Text>

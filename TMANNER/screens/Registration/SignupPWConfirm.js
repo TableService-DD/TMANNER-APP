@@ -38,7 +38,7 @@ function SignupPWConfirm({navigation}) {
             <Header 
                 navigation={navigation}
                 title="회원가입"
-                targetScreen={'Login'} />
+                targetScreen={'SignupPW'} />
 
             <FormInput 
                 navigation={navigation}
