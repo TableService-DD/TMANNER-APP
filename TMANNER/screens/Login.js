@@ -68,7 +68,7 @@ function Login({navigation}) {
                                     name="keyboard-arrow-right"
                                     size={24}
                                     color="#000"
-                                />
+                                / >
                             </View>
                         </TouchableOpacity>
                     </View>
@@ -83,7 +83,7 @@ function Login({navigation}) {
 
                 <View style={styles.signUpContainer}>
                     <Text>아직 띵동에 가입 안하셨나요?</Text>
-                    <TouchableOpacity style={styles.signUpButton} onPress={() => navigation.navigate('SignupName')}>
+                    <TouchableOpacity style={styles.signUpButton} onPress={() => navigation.navigate('StoreAddStoreName')}>
                         <Text style={styles.signUpButtonText}>회원가입 하기</Text>
                     </TouchableOpacity>
                 </View>

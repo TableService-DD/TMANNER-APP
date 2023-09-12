@@ -31,7 +31,7 @@ function SignupName({navigation}) {
 
             <FormInput
                 navigation={navigation}
-                GuideText="로그인에 사용할\n이름을 입력해주세요"
+                GuideText="로그인에 사용할\n대표자 이름을 입력해주세요"
                 step="1"
                 placeholder="이름"
                 buttonText="입력 완료"

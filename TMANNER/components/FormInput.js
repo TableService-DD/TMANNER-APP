@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { View, TouchableOpacity, Text, TextInput, StyleSheet} from 'react-native';
 
 
-function FormInput({ navigation, GuideText, step, placeholder,
+function FormInput({ navigation, GuideText, step, StepBack = '/5', placeholder,
     buttonText, TargetScreen='', isSecure=false, 
     showButton =true,
     onButtonPress}) {
@@ -43,7 +43,7 @@ function FormInput({ navigation, GuideText, step, placeholder,
 
                 <View style={styles.StepContainer}>
                     <Text style={styles.StepFront}>{step}</Text>
-                    <Text style={styles.StepBack}>/5</Text>
+                    <Text style={styles.StepBack}>{StepBack}</Text>
                 </View>
             </View>
             <TextInput 

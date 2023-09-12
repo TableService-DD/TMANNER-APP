@@ -16,7 +16,7 @@ function StoreInfoAdd({navigation}) {
                 navigation={navigation}
                 GuideText="가게의 대표자 이름을\n입력해주세요."
                 step="1"
-                StepBack="/5"
+                StepBack="/4"
                 placeholder="이름"
                 buttonText="다음"
                 TargetScreen={'StoreAddStoreName'}
