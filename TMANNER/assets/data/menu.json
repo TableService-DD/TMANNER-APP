@@ -24,28 +24,7 @@
                     "status" : false,
                     "image" : "../source/menu1.png",
                     "menuIntro" : "이것은 맛있는 짜파게티 계란 치즈입니다."
-                },
-                {
-                    "menuName" : "두부김치",
-                    "price" : 18900,
-                    "status" : false,
-                    "image" : "../source/menu1.png",
-                    "menuIntro" : "이것은 맛있는 두부김치입니다."
-                },
-                {
-                    "menuName" : "된장찌개",
-                    "price" : 18900,
-                    "status" : false,
-                    "image" : "../source/menu1.png",
-                    "menuIntro" : "이것은 맛있는 된장찌개입니다."
-                },
-                {
-                    "menuName" : "육개장",
-                    "price" : 14900,
-                    "status" : true,
-                    "image" : "../source/menu1.png",
-                    "menuIntro" : "이것은 맛있는 육개장입니다."
-                }                
+                }              
             ]
         },
         {

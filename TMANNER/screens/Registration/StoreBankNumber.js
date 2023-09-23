@@ -1,13 +1,47 @@
 import { StyleSheet, SafeAreaView} from 'react-native';
 import React, {useState} from 'react';
-import { View, TouchableOpacity, Text} from 'react-native';
 
 import Header from "../../components/Header";
 import FormInput from '../../components/FormInput';
 import ModalTab from '../../components/ModaTab';
 
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import AddStore from '../../api/store';
+
 function StoreBankNumber({navigation}) {
-    const [modalVisible, setModalVisible] = useState(false); //모달 상태
+    const [modalVisible, setModalVisible] = useState(false); //모달 상태r
+    const saveStoreBankNumberToStorage = async (StoreBankNumber) => {
+        try {
+            //로컬스토리지에 user_StoreName key값으로 저장
+            await AsyncStorage.setItem('StoreBankNumber', StoreBankNumber);
+            console.log('저장된 StoreBankNumber', StoreBankNumber);
+            handleAddStore();
+        }
+        catch (e) {
+            alert('Error saving StoreBankNumber to storage');
+        }
+    };
+
+    const handleAddStore = async () => {
+        const StoreName = await AsyncStorage.getItem('StoreName');
+        const StoreNumber = await AsyncStorage.getItem('StoreNumber');
+        const StoreBank = await AsyncStorage.getItem('StoreBank');
+        const StoreBankNumber = await AsyncStorage.getItem('StoreBankNumber');
+        const StoreCode = Math.random().toString(36).substring(2, 8) // 랜덤 StoreCode 생성
+        const StoreStatus = true;
+        console.log('StoreName', StoreCode);
+        const isSuccess = await AddStore({StoreCode, StoreName, StoreStatus});
+        
+        if (isSuccess) {
+            setModalVisible(true);
+            console.log("가게 등록 성공!\n가게코드: ", StoreCode, "가게명: ", StoreName, "가게상태: ", StoreStatus)
+        }
+        else {
+            alert('가게 등록에 실패했습니다.');
+        }
+    };
+
+
     return (
         <SafeAreaView style={styles.safeAreaContainer}>
             <Header 
@@ -18,12 +52,12 @@ function StoreBankNumber({navigation}) {
             <FormInput 
                 navigation={navigation}
                 GuideText="가게의 정산계좌를\n입력해주세요."
-                step="5"
-                StepBack="/5"
+                step="4"
+                StepBack="/4"
                 placeholder="계좌 입력하기"
                 buttonText="완료"
-                isSecure={true}
-                onButtonPress={() => setModalVisible(true)}
+                isSecure={false}
+                onButtonPress={saveStoreBankNumberToStorage}
             />
             <ModalTab 
                 isVisible={modalVisible} 
@@ -69,4 +103,5 @@ const styles = StyleSheet.create({
     },
 
 });
+
 export default StoreBankNumber;

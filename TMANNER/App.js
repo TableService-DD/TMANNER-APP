@@ -50,6 +50,7 @@ function App() {
         <Stack.Screen name="SignupPW" component={SignupPW} />
         <Stack.Screen name="SignupPWConfirm" component={SignupPWConfirm} />
         <Stack.Screen name="UserVerification" component={UserVerification} />
+        
         <Stack.Screen name="StoreAddName" component={StoreAddName} />
         <Stack.Screen name="StoreAddStoreName" component={StoreAddStoreName} />
         <Stack.Screen name="StoreNumber" component={StoreNumber} />

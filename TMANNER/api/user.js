@@ -13,7 +13,6 @@ export async function getUserList() {
     }
 }
 
-
 export async function loginUser({ user_id, user_pw }) {
     try {
         const response = await axios.get(`http://hoshi-kirby.xyz/api/v1/user/login`, {
@@ -52,7 +51,6 @@ export async function checkUser() {
         return false;
     }
 }
-
 
 export async function UpdateUser(email) {
     try {

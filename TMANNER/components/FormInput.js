@@ -3,14 +3,12 @@ import { View, TouchableOpacity, Text, TextInput, StyleSheet} from 'react-native
 
 
 function FormInput({ navigation, GuideText, step, StepBack = '/5', placeholder,
-    buttonText, TargetScreen='', isSecure=false, 
-    showButton =true,
-    onButtonPress}) {
-    //입력 값, 일종의 유효성 검사 느낌
+    buttonText, TargetScreen='', isSecure=false,
+    showButton =true, onButtonPress}) {
+    //입력 값, 일종의 유효성 검사
 
     //input value값 저장
     const [inputValue, setInputValue] = useState('');
-    //input 값이 
     const isInputEmpty = inputValue === '';
 
     //기본 이벤트 동작 선언
@@ -27,7 +25,8 @@ function FormInput({ navigation, GuideText, step, StepBack = '/5', placeholder,
         if (onButtonPress) {
             onButtonPress(inputValue);
             console.log('전달 완료', inputValue);
-        } else {
+        }
+        else {
             defaultOnPress();
         }
     };

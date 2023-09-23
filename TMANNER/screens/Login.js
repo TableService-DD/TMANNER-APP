@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, TextInput, StyleSheet, TouchableOpacity, navigate } from "react-native";
+import { View, Text, TextInput, StyleSheet, TouchableOpacity} from "react-native";
 import { MaterialIcons } from '@expo/vector-icons';
 
 import { loginUser } from "../api/user";
 
-function Login({navigation}) {
+function Login({ navigation }) {
     const [id, setId] = useState("");
     const [password, setPassword] = useState("");
     const [isChecked, setChecked] = useState(false);
@@ -83,7 +83,7 @@ function Login({navigation}) {
 
                 <View style={styles.signUpContainer}>
                     <Text>아직 띵동에 가입 안하셨나요?</Text>
-                    <TouchableOpacity style={styles.signUpButton} onPress={() => navigation.navigate('StoreAddStoreName')}>
+                    <TouchableOpacity style={styles.signUpButton} onPress={() => navigation.navigate('SignupName')}>
                         <Text style={styles.signUpButtonText}>회원가입 하기</Text>
                     </TouchableOpacity>
                 </View>
