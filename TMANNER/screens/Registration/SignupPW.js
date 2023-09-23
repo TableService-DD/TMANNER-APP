@@ -28,7 +28,7 @@ function SignupPW({navigation}) {
             <FormInput 
                 navigation={navigation}
                 GuideText="로그인에 사용할\n비밀번호를 입력해주세요"
-                step="2"
+                step="3"
                 placeholder="비밀번호"
                 buttonText="입력 완료"
                 TargetScreen={'SignupPWConfirm'}

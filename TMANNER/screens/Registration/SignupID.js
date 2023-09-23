@@ -13,6 +13,8 @@ function SignupID({navigation}) {
         try {
             // Check for email validity before saving
             var regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            
+            //이메일 유효성 검사 실패
             if(!regex.test(id)) {
                 alert('유효하지 않은 이메일 주소입니다. 다시 입력해주세요.');
                 return false;  // Return false for invalid email
@@ -20,6 +22,8 @@ function SignupID({navigation}) {
             
             await AsyncStorage.setItem('user_id', id);
             console.log('저장된 ID', id);
+            navigation.navigate('SignupPW'); // Navigate to the next screen
+
             return true;  // Return true for successful operation
         } catch (e) {
             alert('Error saving ID to storage');
@@ -27,7 +31,6 @@ function SignupID({navigation}) {
         }
     };
     
-
     return (
         <SafeAreaView style={styles.safeAreaContainer}>
             <Header

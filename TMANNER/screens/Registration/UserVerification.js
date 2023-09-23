@@ -8,6 +8,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import Header from "../../components/Header";
 import ModalTab from '../../components/ModaTab';
 
+import { getLogin, signUp } from '../../api/auth';
+
 function UserVerification({navigation}) {
     //입력값 여부 확인
     const [inputValue, setInputValue] = useState(''); //전화번호 INPUT BOX
@@ -19,34 +21,39 @@ function UserVerification({navigation}) {
 
     const [modalVisible, setModalVisible] = useState(false); //모달 상태
 
+    //폰번호 저장
     const savePhoneNumberToStorage = async (phoneNum) => {
         try {
             await AsyncStorage.setItem('user_phoneNum', phoneNum);
-
-            id = await AsyncStorage.getItem('user_id');
-            pw = await AsyncStorage.getItem('user_pw');
-            name = await AsyncStorage.getItem('user_name');
-
-            console.log('name',name);
-            console.log('id',id);
-            console.log('pw',pw);
-            console.log('phoneNum',phoneNum); 
-
         } catch (e) {
             alert('Error saving PW to storage');
         }
     };
+
 
     const handleRegistration = async () => {
         const user_id = await AsyncStorage.getItem('user_id');
         const user_pw = await AsyncStorage.getItem('user_pw');
         const user_name = await AsyncStorage.getItem('user_name');
         const user_phone = inputValue;
-        const user_email = "user@example.com";  // 임의로 설정한 값입니다.
-        const isSuccess = await RegisterUser({ user_id, user_pw, user_name, user_phone, user_email });
-
-        if (isSuccess) {
+        const user_email = user_id;
+        const userInfo = await signUp({ user_id, user_pw, user_name, user_phone, user_email });
+    
+        if (userInfo) {
+            // 회원가입에 성공한 경우
+    
+            // 전화번호 저장
             savePhoneNumberToStorage(inputValue);
+    
+            // 로그인 시도
+            const loginSuccess = await getLogin({ id: user_id, pw: user_pw });
+            
+            if (loginSuccess) {
+                console.log("로그인 성공!");
+            } else {
+                console.error("로그인 실패!");
+            }
+    
             setModalVisible(true);
         } else {
             alert('사용자 등록에 실패했습니다.');
@@ -67,8 +74,8 @@ function UserVerification({navigation}) {
                     </Text>
 
                     <View style={styles.StepContainer}>
-                        <Text style={styles.StepFront}>4</Text>
-                        <Text style={styles.StepBack}>/4</Text>
+                        <Text style={styles.StepFront}>5</Text>
+                        <Text style={styles.StepBack}>/5</Text>
                     </View>
                 </View>
 

@@ -30,6 +30,8 @@ function StoreBankNumber({navigation}) {
         const StoreCode = Math.random().toString(36).substring(2, 8) // 랜덤 StoreCode 생성
         const StoreStatus = true;
         console.log('StoreName', StoreCode);
+
+        //API 삽입
         const isSuccess = await AddStore({StoreCode, StoreName, StoreStatus});
         
         if (isSuccess) {

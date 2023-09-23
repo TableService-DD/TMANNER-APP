@@ -43,7 +43,7 @@ function SignupPWConfirm({navigation}) {
             <FormInput 
                 navigation={navigation}
                 GuideText="로그인에 사용할\n비밀번호를 한 번 더 입력해주세요"
-                step="3"
+                step="4"
                 placeholder="비밀번호"
                 buttonText="입력 완료"
                 TargetScreen={'UserVerification'}
