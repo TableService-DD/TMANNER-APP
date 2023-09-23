@@ -12,7 +12,7 @@ function SignupPW({navigation}) {
     const savePWToStorage = async (pw) => {
         try {
             await AsyncStorage.setItem('user_pw', pw);
-            console.log('저장된 PW',pw);
+            console.log('저장된 PW', pw);
             navigation.navigate('SignupPWConfirm');
         } catch (e) {
             alert('Error saving PW to storage');

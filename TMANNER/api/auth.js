@@ -1,5 +1,6 @@
 import axios from "axios";
 import { BASE_URL } from "./data";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 // 로그인 API 호출 함수
 export async function getLogin(userInfo) {
@@ -18,11 +19,14 @@ export async function getLogin(userInfo) {
     ) {
       console.log("Login Success:", response.data);
       // 로컬 스토리지에 access_token과 refresh_token 저장
-      localStorage.setItem("access_token", response.data.data.access_token);
-      localStorage.setItem("refresh_token", response.data.data.refresh_token);
+      console.log("access_token", response.data.data.access_token);
+      console.log("refresh_token", response.data.data.refresh_token)
+      AsyncStorage.setItem("access_token", response.data.data.access_token);
+      AsyncStorage.setItem("refresh_token", response.data.data.refresh_token);
       return true;
     }
     return false;
+
   } catch (error) {
     console.error("Login Error:", error);
     return false;
@@ -52,7 +56,7 @@ export async function getRefresh() {
       {},
       {
         params: {
-          refresh_token: localStorage.getItem("refresh_token"),
+          refresh_token: AsyncStorage.getItem("refresh_token"),
         },
       }
     );
@@ -60,7 +64,7 @@ export async function getRefresh() {
     // 응답이 올바른 경우 (200 상태 코드와 데이터가 있는 경우)
     if (response.status === 200 && response.data) {
       // 로컬 스토리지에 새로운 access_token 저장
-      localStorage.setItem("access_token", response.data.access_token);
+      AsyncStorage.setItem("access_token", response.data.access_token);
       console.log("Refresh Success:");
       return true;
     }

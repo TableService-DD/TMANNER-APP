@@ -18,15 +18,20 @@ function Login({ navigation }) {
         }
     }, [id, password]);
 
+    // const handleLogin = async () => {
+    //     const success = await loginUser({ user_id: id, user_pw: password });
+    //     if (success) {
+    //         navigation.navigate('Main');
+    //     } else {
+    //         // 실패 시 사용자에게 알림을 제공하는 코드 (예: alert 사용)
+    //         alert('로그인 실패. 이메일 또는 비밀번호를 확인해주세요.');
+    //     }
+    // };
+
+    //서버 다운 시 사용
     const handleLogin = async () => {
-        const success = await loginUser({ user_id: id, user_pw: password });
-        if (success) {
-            navigation.navigate('Main');
-        } else {
-            // 실패 시 사용자에게 알림을 제공하는 코드 (예: alert 사용)
-            alert('로그인 실패. 이메일 또는 비밀번호를 확인해주세요.');
-        }
-    };
+        navigation.navigate('Main');
+    }
 
     return (
         <View style={styles.container}>
