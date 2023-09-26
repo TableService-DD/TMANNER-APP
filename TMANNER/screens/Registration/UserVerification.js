@@ -1,8 +1,6 @@
 import React, {useState} from 'react';
 import { StyleSheet, SafeAreaView} from 'react-native';
 import { View, TouchableOpacity, Text, TextInput} from 'react-native';
-
-import { RegisterUser } from '../../api/user';  // API 파일 경로를 적절하게 변경해주세요.
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import Header from "../../components/Header";
@@ -37,7 +35,8 @@ function UserVerification({navigation}) {
         const user_name = await AsyncStorage.getItem('user_name');
         const user_phone = inputValue;
         const user_email = user_id;
-        const userInfo = await signUp({ user_id, user_pw, user_name, user_phone, user_email });
+        const userInfo = await signUp({ user_name, user_id, user_pw, user_email, user_type:1, user_phone, is_valid:true });
+        //const userInfo = await signUp({ user_id, user_pw, user_name, user_phone, user_email });
     
         if (userInfo) {
             // 회원가입에 성공한 경우

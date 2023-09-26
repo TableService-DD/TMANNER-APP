@@ -1,55 +1,50 @@
 import axios from "axios";
 import { BASE_URL } from "./data";
+import apiInstance from "./apiInstance";
+//import { STORE_CODE } from "./stocks";
 
-//상점 추가
-export async function AddStore({store_code, store_name, store_status = true}) {
-    try {
-        const response = await axios.get(`${BASE_URL}/order/store/add`, {
-            params : {
-                store_code : store_code,
-                store_name : store_name,
-                store_status : store_status
-            }
-        })
-        console.log(response);
-        return true;
-    } catch (error) {
-        console.error("상점 등록 실패:", error);
-        return false;
-    }
+export async function getStoreList() {
+  try {
+    const response = await apiInstance.get(`${BASE_URL}/order/store/list`);
+    console.log(response);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    return false;
+  }
 }
 
-
-//상점 리스트 받아오기
-export async function getStoreList({store_code, store_status}) {
-    try {
-        const response = await axios.get(`${BASE_URL}/order/store/list`, {
-        params : {
-            store_code : store_code, 
-            store_status : store_status
-            }
-        })
-        console.log(response);
-        return true;
-        
-    } catch (error) {
-        console.error("상점 리스트 받아오기 실패:", error);
-        return false;
-    }
+export async function AddStore({STORE_CODE, StoreName, StoreStatus}) {
+  const Store = {
+    store_code: STORE_CODE,
+    store_name: StoreName,
+    store_status: StoreStatus,
+    total_price: 0,
+  };
+  try {
+    const response = await apiInstance.post(
+      `${BASE_URL}/order/store/add`,
+      Store
+    );
+    console.log("응답결과",response);
+    return true;
+  } catch (error) {
+    console.error(error);
+    return false;
+  }
 }
 
-export async function getStoreUserList(store_code, user_id) {
-    try{
-        const response = await axios.get(`${BASE_URL}/order/store/user/list`, {
-            params : {
-                store_code : store_code, 
-                store_status : store_status
-                }
-            })
-            console.log(response);
-            return true;
-    } catch (error) {
-        console.error("상점 유저 정보 받아오기 실패:", error);
-        return false;
-    }
+export async function updateStore(store) {
+  try {
+    const response = await axios.put(`${BASE_URL}/store`, store, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+      },
+    });
+    console.log(response);
+    return true;
+  } catch (error) {
+    console.error(error);
+    return false;
+  }
 }

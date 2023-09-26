@@ -21,7 +21,7 @@ function SignupName({navigation}) {
     };
 
     return (
-        <SafeAreaView style={styles.safeAreaContainer}>
+        <SafeAreaView style={styles.safeAreaContainer} >
             <Header
                 navigation={navigation}
                 title="회원가입"

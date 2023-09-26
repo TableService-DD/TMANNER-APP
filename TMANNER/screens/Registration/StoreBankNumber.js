@@ -6,7 +6,7 @@ import FormInput from '../../components/FormInput';
 import ModalTab from '../../components/ModaTab';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import AddStore from '../../api/store';
+import { AddStore } from '../../api/store';
 
 function StoreBankNumber({navigation}) {
     const [modalVisible, setModalVisible] = useState(false); //모달 상태r
@@ -25,18 +25,19 @@ function StoreBankNumber({navigation}) {
     const handleAddStore = async () => {
         const StoreName = await AsyncStorage.getItem('StoreName');
         const StoreNumber = await AsyncStorage.getItem('StoreNumber');
-        const StoreBank = await AsyncStorage.getItem('StoreBank');
-        const StoreBankNumber = await AsyncStorage.getItem('StoreBankNumber');
-        const StoreCode = Math.random().toString(36).substring(2, 8) // 랜덤 StoreCode 생성
+        const StoreBank = await AsyncStorage.getItem('StoreBank'); //임시 저장, 추후 반영
+        const StoreBankNumber = await AsyncStorage.getItem('StoreBankNumber'); //임시 저장, 추후 반영
+        const STORE_CODE = Math.random().toString(36).substring(2, 8) // 랜덤 StoreCode 생성
         const StoreStatus = true;
-        console.log('StoreName', StoreCode);
+        console.log('StoreName', STORE_CODE);
 
         //API 삽입
-        const isSuccess = await AddStore({StoreCode, StoreName, StoreStatus});
+        const isSuccess = await AddStore({STORE_CODE, StoreName, StoreStatus});
         
+        console.log(isSuccess)
         if (isSuccess) {
             setModalVisible(true);
-            console.log("가게 등록 성공!\n가게코드: ", StoreCode, "가게명: ", StoreName, "가게상태: ", StoreStatus)
+            console.log("가게 등록 성공!\n가게코드: ", STORE_CODE, "가게명: ", StoreName, "가게상태: ", StoreStatus)
         }
         else {
             alert('가게 등록에 실패했습니다.');

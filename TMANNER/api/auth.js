@@ -39,6 +39,7 @@ export async function signUp(userInfo) {
     // 서버에 회원가입 정보를 기반으로 POST 요청
     const response = await axios.post(`${BASE_URL}/user/register`, userInfo);
     console.log("SignUp Success:", response.data);
+    console.log(response);
     return true;
   } catch (error) {
     console.error("SignUp Error:", error);
