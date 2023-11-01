@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const BASE_URL = 'http://hoshi-kirby.xyz/api/v1';
+export const BASE_URL = 'http://223.130.137.39:3030/api';
 
 export async function fetchMenuData() {
     try {

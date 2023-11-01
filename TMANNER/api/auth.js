@@ -2,12 +2,32 @@ import axios from "axios";
 import { BASE_URL } from "./data";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
+const headers = {
+  "Content-Type": "application/json",
+};
+
+// 회원가입 API 호출 함수
+export async function signUp(data) {
+  const apiURL = `${BASE_URL}/api/biz/user`;
+
+  try {
+    // 서버에 회원가입 정보를 기반으로 POST 요청
+    const response = await axios.put(apiURL, data, { headers : headers });
+    console.log("SignUp Success:", response.data);
+    return true;
+  } catch (error) {
+    console.error("SignUp Error:", error);
+    return false;
+  }
+}
+
+
 // 로그인 API 호출 함수
-export async function getLogin(userInfo) {
+export async function getLogin(data) {
   try {
     // 서버에 로그인 정보를 기반으로 GET 요청
     const response = await axios.get(`${BASE_URL}/user/login`, {
-      params: userInfo,
+      params: data,
     });
 
     // 응답이 올바른 경우 (200 상태 코드, 데이터가 있고, 토큰이 포함되어 있을 때)
@@ -29,21 +49,6 @@ export async function getLogin(userInfo) {
 
   } catch (error) {
     console.error("Login Error:", error);
-    return false;
-  }
-}
-
-// 회원가입 API 호출 함수
-export async function signUp(userInfo) {
-  try {
-    // 서버에 회원가입 정보를 기반으로 POST 요청
-    const response = await axios.post(`${BASE_URL}/user/register`, userInfo);
-    console.log("SignUp Success:", response.data);
-    console.log(response);
-    return true;
-  } catch (error) {
-    console.error("SignUp Error:", error);
-    console.error(userInfo);
     return false;
   }
 }

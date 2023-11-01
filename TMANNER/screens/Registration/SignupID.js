@@ -9,19 +9,19 @@ import FormInput from '../../components/FormInput';
 function SignupID({navigation}) {
 
     //ID localStg에 저장 
-    const saveIDToStorage = async (id) => {
+    const saveIDToStorage = async (email) => {
         try {
-            // Check for email validity before saving
+            // 유효성 검사 체크
             var regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
             
             //이메일 유효성 검사 실패
-            if(!regex.test(id)) {
+            if(!regex.test(email)) {
                 alert('유효하지 않은 이메일 주소입니다. 다시 입력해주세요.');
                 return false;  // Return false for invalid email
             }
             
-            await AsyncStorage.setItem('user_id', id);
-            console.log('저장된 ID', id);
+            await AsyncStorage.setItem('email', email);
+            console.log('저장된 ID', email);
             navigation.navigate('SignupPW'); // Navigate to the next screen
 
             return true;  // Return true for successful operation

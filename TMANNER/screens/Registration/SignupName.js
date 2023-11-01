@@ -12,9 +12,9 @@ function SignupName({navigation}) {
     const saveNameToStorage = async (name) => {
         try {
             //로컬스토리지에 user_id key값으로 저장
-            await AsyncStorage.setItem('user_name', name);
+            await AsyncStorage.setItem('name', name);
             console.log('저장된 Name', name);
-            navigation.navigate('SignupID'); // Navigate to the next screen
+            navigation.navigate('SignupID'); // 다음 스크린 이동
         } catch (e) {
             alert('Error saving Name to storage');
         }

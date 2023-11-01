@@ -10,22 +10,22 @@ function SignupPWConfirm({navigation}) {
 
     let previousPW = []
 
-    const CheckIDToStorage = async (checkPW) => {
+    const CheckIDToStorage = async (password) => {
         try {
-            console.log('현재 입력된 확인용 PW', checkPW);
+            console.log('현재 입력된 확인용 PW', password);
             //1. 입력된 checkPW 가져오기
-            previousPW = await AsyncStorage.getItem('user_pw');
+            previousPW = await AsyncStorage.getItem('password');
 
             //2. 지금 입력된 PW랑 같은지 확인하기
-            if (checkPW !== previousPW) {
+            if (password !== previousPW) {
                 Alert.alert('비밀번호가 일치하지 않습니다.');
                 return;
             }
 
             //3. 같으면 다음 화면으로 넘어가기
-            await AsyncStorage.setItem('user_pw', checkPW);
+            await AsyncStorage.setItem('password', password);
             console.log('저장된 키 값이 동일합니다. ');
-            console.log('저장된 키', checkPW);
+            console.log('저장된 키', password);
             
             navigation.navigate('UserVerification');
         } catch (e) {

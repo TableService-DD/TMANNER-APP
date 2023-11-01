@@ -9,13 +9,13 @@ import FormInput from '../../components/FormInput';
 function SignupPW({navigation}) {
 
     //PW localStorage에 저장
-    const savePWToStorage = async (pw) => {
+    const savePWToStorage = async (password) => {
         try {
-            await AsyncStorage.setItem('user_pw', pw);
-            console.log('저장된 PW', pw);
+            await AsyncStorage.setItem('password', password);
+            console.log('저장된 password', password);
             navigation.navigate('SignupPWConfirm');
         } catch (e) {
-            alert('Error saving PW to storage');
+            alert('Error saving password to storage');
         }
     };
     return (

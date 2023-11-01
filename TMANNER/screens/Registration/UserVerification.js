@@ -20,32 +20,30 @@ function UserVerification({navigation}) {
     const [modalVisible, setModalVisible] = useState(false); //모달 상태
 
     //폰번호 저장
-    const savePhoneNumberToStorage = async (phoneNum) => {
+    const savePhoneNumberToStorage = async (phone_cert_id) => {
         try {
-            await AsyncStorage.setItem('user_phoneNum', phoneNum);
+            await AsyncStorage.setItem('phone_cert_id', phone_cert_id);
         } catch (e) {
-            alert('Error saving PW to storage');
+            alert('Error saving phone_cert_id to storage');
         }
     };
 
 
     const handleRegistration = async () => {
-        const user_id = await AsyncStorage.getItem('user_id');
-        const user_pw = await AsyncStorage.getItem('user_pw');
-        const user_name = await AsyncStorage.getItem('user_name');
-        const user_phone = inputValue;
-        const user_email = user_id;
-        const userInfo = await signUp({ user_name, user_id, user_pw, user_email, user_type:1, user_phone, is_valid:true });
-        //const userInfo = await signUp({ user_id, user_pw, user_name, user_phone, user_email });
-    
-        if (userInfo) {
+        const name = await AsyncStorage.getItem('name');
+        const email = await AsyncStorage.getItem('email');
+        const password = await AsyncStorage.getItem('password');
+        const phone_cert_id = await AsyncStorage.getItem('phone_cert_id');
+        const data = await signUp({ name, email, password, phone_cert_id});
+
+        if (data) {
             // 회원가입에 성공한 경우
     
             // 전화번호 저장
             savePhoneNumberToStorage(inputValue);
     
             // 로그인 시도
-            const loginSuccess = await getLogin({ id: user_id, pw: user_pw });
+            const loginSuccess = await getLogin({ id: email, pw: password });
             
             if (loginSuccess) {
                 console.log("로그인 성공!");
