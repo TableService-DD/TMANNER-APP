@@ -9,7 +9,18 @@ import { SelectList } from 'react-native-dropdown-select-list';
 import ModalTab from '../components/ModaTab';
 
 function DetailMenuEdit({ route, navigation}) {
-    const { productId } = route.params;
+
+    if(!route || !route.params) {
+        console.error("Route or route params are not defined!");
+        return null; // or some fallback UI
+    }
+    
+    const { productId = null } = route.params;
+
+    if(!productId) {
+        console.error("Product ID is not available!");
+        return null; // or some fallback UI
+    }
     const windowWidth = Dimensions.get('window').width;
     const menuItem = categories.flatMap(category => category.content).find(item => item.productId === productId);
 

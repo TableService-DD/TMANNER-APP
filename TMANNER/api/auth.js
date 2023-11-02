@@ -21,7 +21,6 @@ export async function signUp(data) {
   }
 }
 
-
 // 로그인 API 호출 함수
 export async function getLogin(data) {
   try {

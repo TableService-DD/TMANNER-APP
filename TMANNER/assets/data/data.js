@@ -9,35 +9,35 @@ const categories = [
                 image: require('../source/menu1.png'),
                 menuIntro: '이것은 맛있는 짜파게티 계란 치즈입니다.이것은 맛있는 짜파게티 계란 치즈입니다.이것은 맛있는 짜파게티 계란 치즈입니다.이것은 맛있는 짜파게티 계란 치즈입니다.이것은 맛있는 짜파게티 계란 치즈입니다.이것은 맛있는 짜파게티 계란 치즈입니다.'
             }, {
-                productId: '2',
+                productId: 2,
                 menuName: '바지락술찜 파스타',
                 price: '18,900',
                 status: false,
                 image: require('../source/menu1.png'),
                 menuIntro: '이것은 맛있는 짜파게티 계란 치즈입니다.이것은 맛있는 짜파게티 계란 치즈입니다.이것은 맛있는 짜파게티 계란 치즈입니다.이것은 맛있는 짜파게티 계란 치즈입니다.이것은 맛있는 짜파게티 계란 치즈입니다.이것은 맛있는 짜파게티 계란 치즈입니다.'
             },{
-                productId: '3',
+                productId: 3,
                 menuName: '부추훈제오리구이',
                 price: '18,900',
                 status: false,
                 image: require('../source/menu1.png'),
                 menuIntro: '이것은 맛있는 짜파게티 계란 치즈입니다.이것은 맛있는 짜파게티 계란 치즈입니다.이것은 맛있는 짜파게티 계란 치즈입니다.이것은 맛있는 짜파게티 계란 치즈입니다.이것은 맛있는 짜파게티 계란 치즈입니다.이것은 맛있는 짜파게티 계란 치즈입니다.'
             },{
-                productId: '4',
+                productId: 4,
                 menuName: '두부김치',
                 price: '14,900',
                 status: false,
                 image: require('../source/menu1.png'),
                 menuIntro: '이것은 맛있는 짜파게티 계란 치즈입니다.이것은 맛있는 짜파게티 계란 치즈입니다.이것은 맛있는 짜파게티 계란 치즈입니다.이것은 맛있는 짜파게티 계란 치즈입니다.이것은 맛있는 짜파게티 계란 치즈입니다.이것은 맛있는 짜파게티 계란 치즈입니다.'
             },{
-                productId: '05',
+                productId: 5,
                 menuName: '된장찌개',
                 price: '14,900',
                 status: true,
                 image: require('../source/menu1.png'),
                 menuIntro: '이것은 맛있는 짜파게티 계란 치즈입니다.이것은 맛있는 짜파게티 계란 치즈입니다.이것은 맛있는 짜파게티 계란 치즈입니다.이것은 맛있는 짜파게티 계란 치즈입니다.이것은 맛있는 짜파게티 계란 치즈입니다.이것은 맛있는 짜파게티 계란 치즈입니다.'
             },{
-                productId: '06',
+                productId: 6,
                 menuName: '육개장',
                 price: '14,900',
                 status: true,
@@ -48,14 +48,14 @@ const categories = [
     {id: '02', name: '사이드',
     content: [
         {   
-            productId: '08',
+            productId: 7,
             menuName: '통닭크림파스타',
             price: '22,900',
             status: true,
             image: require('../source/menu1.png'),
             menuIntro: '이것은 맛있는 짜파게티 계란 치즈입니다.이것은 맛있는 짜파게티 계란 치즈입니다.이것은 맛있는 짜파게티 계란 치즈입니다.이것은 맛있는 짜파게티 계란 치즈입니다.이것은 맛있는 짜파게티 계란 치즈입니다.이것은 맛있는 짜파게티 계란 치즈입니다.'
         }, {
-            productId: '09',
+            productId: 8,
             menuName: '바지락술찜 파스타',
             price: '18,900',
             status: false,
@@ -64,13 +64,13 @@ const categories = [
     {id: '03', name: '탕류',
         content: [
             {
-                productId: '10',
+                productId: 9,
                 menuName: '메뉴1',
                 price: '10,000',
                 status: false,
                 image: require('../source/menu1.png'),
             }, {
-                productId: '11',
+                productId: 10,
                 menuName: '메뉴2',
                 price: '12,000',
                 status: false,
@@ -79,13 +79,13 @@ const categories = [
     {id: '04', name: '튀김류',
     content: [
         {
-            productId: '12',
+            productId: 11,
             menuName: '메뉴1',
             price: '10,000',
             status: false,
             image: require('../source/menu1.png'),
         }, {
-            productId: '13',
+            productId: 12,
             menuName: '메뉴2',
             price: '12,000',
             status: false,
@@ -94,13 +94,13 @@ const categories = [
     {id: '05', name: '주류',
         content: [
             {   
-                productId: '14',
+                productId: 13,
                 menuName: '메뉴1',
                 price: '10,000',
                 status: false,
                 image: require('../source/menu1.png'),
             }, {
-                productId: '15',
+                productId: 14,
                 menuName: '메뉴2',
                 price: '12,000',
                 status: false,
@@ -109,13 +109,13 @@ const categories = [
     {id: '06', name: '기타',
     content: [
         {
-            productId: '16',
+            productId: 15,
             menuName: '메뉴1',
             price: '10,000',
             status: false,
             image: require('../source/menu1.png'),
         }, {
-            productId: '17',
+            productId: 16,
             menuName: '메뉴3',
             price: '12,000',
             status: false,
