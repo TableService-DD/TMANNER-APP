@@ -11,7 +11,6 @@ import Main from './screens/Main';
 import SoldOut from './screens/SoldOut';
 import MenuEdit from './screens/MenuEdit';
 import Test from './screens/Test';
-import Backup from './screens/Backup';
 import DetailMenuEdit from './screens/DetailMenuEdit';
 import DetailMenuAdd from './screens/DetailMenuAdd';
 
@@ -41,7 +40,6 @@ function App() {
         <Stack.Screen name="SoldOut" component={SoldOut}/>
         <Stack.Screen name="MenuEdit" component={MenuEdit}/>
         <Stack.Screen name="Test" component={Test}/>
-        <Stack.Screen name="Backup" component={Backup}/>
         <Stack.Screen name="DetailMenuEdit" component={DetailMenuEdit}/>
         <Stack.Screen name="DetailMenuAdd" component={DetailMenuAdd}/>
         
