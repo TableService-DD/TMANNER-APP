@@ -33,7 +33,7 @@ function UserVerification({navigation}) {
         const name = await AsyncStorage.getItem('name');
         const email = await AsyncStorage.getItem('email');
         const password = await AsyncStorage.getItem('password');
-        const phone_cert_id = await AsyncStorage.getItem('phone_cert_id');
+        const phone_cert_id = 1;
         const data = await signUp({ name, email, password, phone_cert_id});
 
         if (data) {
@@ -54,6 +54,7 @@ function UserVerification({navigation}) {
             setModalVisible(true);
         } else {
             alert('사용자 등록에 실패했습니다.');
+            console.log(data);
         }
     }
 
