@@ -6,7 +6,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import Header from "../../components/Header";
 import ModalTab from '../../components/ModaTab';
 
-import { getLogin, signUp } from '../../api/auth';
+import { postLogin, signUp } from '../../api/auth';
 
 function UserVerification({navigation}) {
     //입력값 여부 확인
@@ -40,10 +40,11 @@ function UserVerification({navigation}) {
             // 회원가입에 성공한 경우
     
             // 전화번호 저장
-            savePhoneNumberToStorage(inputValue);
+            //savePhoneNumberToStorage(inputValue);
     
             // 로그인 시도
-            const loginSuccess = await getLogin({ id: email, pw: password });
+            console.log("로그인 시도", email, password);
+            const loginSuccess = await postLogin({ email, password });
             
             if (loginSuccess) {
                 console.log("로그인 성공!");

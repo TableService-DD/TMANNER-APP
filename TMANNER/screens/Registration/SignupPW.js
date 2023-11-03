@@ -23,7 +23,7 @@ function SignupPW({navigation}) {
             <Header 
                 navigation={navigation}
                 title="회원가입"
-                targetScreen={'SignID'} />
+                targetScreen={'SignupID'} />
 
             <FormInput 
                 navigation={navigation}

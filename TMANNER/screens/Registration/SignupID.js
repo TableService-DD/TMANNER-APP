@@ -36,7 +36,7 @@ function SignupID({navigation}) {
             <Header
                 navigation={navigation}
                 title="회원가입"
-                targetScreen={'SignName'}
+                targetScreen={'SignupName'}
             />
 
             <FormInput

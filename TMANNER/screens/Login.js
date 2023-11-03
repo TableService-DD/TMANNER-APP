@@ -1,37 +1,37 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, TextInput, StyleSheet, TouchableOpacity} from "react-native";
 import { MaterialIcons } from '@expo/vector-icons';
+import { postLogin } from '../api/auth';
 
-import { loginUser } from "../api/user";
 
 function Login({ navigation }) {
-    const [id, setId] = useState("");
+    const [email, setemail] = useState("");
     const [password, setPassword] = useState("");
     const [isChecked, setChecked] = useState(false);
     const [isInputFilled, setInputFilled] = useState(false);
 
     useEffect(() => {
-        if(id.trim() && password.trim()) {
+        if(email.trim() && password.trim()) {
             setInputFilled(true);
         } else {
             setInputFilled(false);
         }
-    }, [id, password]);
+    }, [email, password]);
 
-    // const handleLogin = async () => {
-    //     const success = await loginUser({ user_id: id, user_pw: password });
-    //     if (success) {
-    //         navigation.navigate('Main');
-    //     } else {
-    //         // 실패 시 사용자에게 알림을 제공하는 코드 (예: alert 사용)
-    //         alert('로그인 실패. 이메일 또는 비밀번호를 확인해주세요.');
-    //     }
-    // };
+    const handleLogin = async () => {
+        const success = await postLogin({email, password });
+        if (success) {
+            navigation.navigate('Main');
+        } else {
+            // 실패 시 사용자에게 알림을 제공하는 코드 (예: alert 사용)
+            alert('로그인 실패. 이메일 또는 비밀번호를 확인해주세요.');
+        }
+    };
 
     //서버 다운 시 사용
-    const handleLogin = async () => {
-        navigation.navigate('Main');
-    }
+    // const handleLogin = async () => {
+    //     navigation.navigate('Main');
+    // }
 
     return (
         <View style={styles.container}>
@@ -41,8 +41,8 @@ function Login({ navigation }) {
                 <TextInput
                     style={styles.input}
                     placeholder="아이디"
-                    onChangeText={setId}
-                    value={id}
+                    onChangeText={setemail}
+                    value={email}
                     autoCapitalize="none"
                 />
 

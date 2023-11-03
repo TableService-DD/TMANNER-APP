@@ -5,7 +5,7 @@ import CryptoJS from "crypto-js";
 
 const TIMEOUT = 5000; // 5 seconds
 const headers = {
-  "Content-Type": "application/json",
+  "Content-Type": "application/json; charset=utf-8",
 };
 
 // 데이터를 MD5로 해싱하는 함수
@@ -22,6 +22,8 @@ export async function signUp(data) {
     ...data,
     password: md5Hash(data.password)
   };
+  console.log("Original Password:", data.email);
+  console.log("Original Password:", data.password);
   console.log("Hash1", hashedData.password)
 
   try {
@@ -39,38 +41,25 @@ export async function signUp(data) {
 }
 
 // 로그인 API 호출 함수
-export async function getLogin(data) {
+export async function postLogin(data) {
   // 패스워드를 MD5로 해싱하고, 데이터 객체를 복사하여 수정
   const hashedData = {
     ...data,
     password: md5Hash(data.password)
   };
-  console.log("Hash2", hashedData.password)
+  console.log("Hash2", hashedData)
 
   try {
     // 서버에 로그인 정보를 기반으로 GET 요청
-    const response = await axios.get(`${BASE_URL}/biz/user`, {
-      params: hashedData,
-      timeout: TIMEOUT,
-    },{
-      headers: {
-          'Content-Type': 'application/json'
-      }
-    });
+    const response = await axios.post(`${BASE_URL}/biz/user`, hashedData,{headers: headers, timeout: TIMEOUT});
 
     // 응답이 올바른 경우 (200 상태 코드, 데이터가 있고, 토큰이 포함되어 있을 때)
-    if (
-      response.status === 200 &&
-      response.data &&
-      response.data.data &&
-      "access_token" in response.data.data
-    ) {
+    if (response.status === 200 && response.data) {
       console.log("Login Success:", response.data);
+      
       // 로컬 스토리지에 access_token과 refresh_token 저장
-      console.log("access_token", response.data.data.access_token);
-      console.log("refresh_token", response.data.data.refresh_token);
-      AsyncStorage.setItem("access_token", response.data.data.access_token);
-      AsyncStorage.setItem("refresh_token", response.data.data.refresh_token);
+      await AsyncStorage.setItem("access_token", response.data.access_token);
+      await AsyncStorage.setItem("refresh_token", response.data.refresh_token);
       return true;
     }
     return false;
